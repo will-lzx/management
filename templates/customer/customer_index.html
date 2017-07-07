@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+    客户管理
+{% endblock %}
+
+{% block content %}
+    <div class="div-home">
+        <table>
+            <tr>
+                <td>微信号</td>
+                <td>手机号</td>
+                <td>支付宝帐号</td>
+                <td>蚂蚁信用分</td>
+                <td>押金</td>
+                <td>押金状态</td>
+            </tr>
+            <tr>
+                {% if customers %}
+                    {% for customer in customers %}
+                        <td>{{ customer.weixin_number }}</td>
+                        <td>{{ customer.mobile_number }}</td>
+                        <td>{{ customer.alipay }}</td>
+                        <td>{{ customer.credit_score }}</td>
+                        <td>{{ customer.deposit }}</td>
+                        <td>{{ customer.deposit_status }}</td>
+                    {% endfor %}
+                {% else %}
+                    <td colspan="6">No customers still</td>
+                {% endif %}
+            </tr>
+        </table>
+    </div>
+{% endblock %}

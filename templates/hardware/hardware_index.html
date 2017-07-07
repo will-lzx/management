@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}轻拍科技后台管理{% endblock %}
+
+{% block content %}
+    <div class="div-home">
+        <table>
+            <tr>
+                <td><a href="/hardware/cabinet/"><img src="{% static '/images/cabinet.jpg' %}"></a></td>
+                <td><a href="/hardware/pole/"><img src="{% static '/images/pole.jpg' %}"></a></td>
+            </tr>
+            <tr>
+                <td><a href="/hardware/spot/"><img src="{% static '/images/customer.jpg' %}"></a></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

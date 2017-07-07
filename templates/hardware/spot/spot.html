@@ -1,0 +1,252 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+    <span>机柜管理</span>
+{% endblock %}
+
+{% block content %}
+    <div>
+        <a href="#" onclick="spot_add()">添加</a>
+    </div>
+    <div class="div-add">
+        <table>
+            <tr>
+                <td>景点名称</td>
+                <td>
+                    <input name="spot_name" required value="请输入景点名称" onblur="mblur('请输入景点名称')" onclick="mclick('请输入景点名称')">
+                </td>
+            </tr>
+            <tr>
+                <td>省</td>
+                <td>
+                    <select id="province" name="" size="" >
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>市</td>
+                <td>
+                    <select id="city" name="" size="">
+                      <option value="0">请选择城市</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>详细地址</td>
+                <td>
+                    <input name="address" required value="请输入详细地址" onblur="mblur('请输入详细地址')" onclick="mclick('请输入详细地址')">
+                </td>
+            </tr>
+            <tr>
+                <td>负责人</td>
+                <td><input name="responsible_person" required value="请输入负责人" onblur="mblur('请输入负责人')" onclick="mclick('请输入负责人')"></td>
+            </tr>
+            <tr>
+                <td>计费规则</td>
+                <td>
+                    <select id="rule">
+                        <option value="0">请选择计费规则</option>
+                        {% if rules %}
+                            {% for rule in rules %}
+                                <option>{{ rule.id }}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="提交" onclick="submit()"></td>
+            </tr>
+        </table>
+        <div>
+            <a href="#" onclick="cancel_add()">取消</a>
+        </div>
+    </div>
+    <div class="div-content">
+        <table>
+            <tr>
+                <td rowspan="2">景点名称</td>
+                <td rowspan="2">省</td>
+                <td rowspan="2">市</td>
+                <td rowspan="2">详细地址</td>
+                <td rowspan="2">负责人</td>
+                <td rowspan="2">计费规则</td>
+                <td colspan="2">操作</td>
+            </tr>
+            <tr>
+                <td>更新</td>
+                <td>删除</td>
+            </tr>
+
+            {% if spots %}
+                {% for spot in spots %}
+                    <tr>
+                        <td>{{ spot.name }}</td>
+                        <td>{{ spot.province }}</td>
+                        <td>{{ spot.city }}</td>
+                        <td>{{ spot.address }}</td>
+                        <td>{{ spot.responsible_person }}</td>
+                        <td>{{ spot.rule_id }}</td>
+                        <td><a href="/hardware/spot/spot_update/{{ spot.id }}">更新</a></td>
+                        <td><a href="#" onclick="delete_spot({{ spot.id }})">删除</a></td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="6">No cabinets</td>
+                </tr>
+            {% endif %}
+        </table>
+    </div>
+
+    <script src="/static/js/jquery-3.2.1.js"></script>
+    <script src="/static/js/province_city.js"></script>
+
+    <script>
+
+        $.ajaxSetup({data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+        }});
+
+        $(document).ready(function() {
+
+        });
+
+        function spot_add()
+        {
+            $('.div-add').show();
+        }
+
+        $.each(
+            GP,    function(i){
+                $("#province").append("<option value='" + i + "'>" + GP[i] + "</option>");
+            }
+        );
+
+        function cancel_add()
+        {
+             clear_content();
+             $('.div-add').hide();
+        }
+
+    function mclick(expect_value){
+        if(event.srcElement.value==expect_value)
+            event.srcElement.value="";
+    }
+
+    function mblur(expect_value){
+        if(event.srcElement.value=="")
+            event.srcElement.value=expect_value;
+    }
+
+    $("#province").change(
+        function () {
+            var s = $("#province").val();
+            $("#city").get(0).selectedIndex = 0 ;
+            if (s != 0)
+            {
+                $("#city").empty();
+                $.each(
+                    GT[s],    function(i){
+                    $("#city").append("<option value='" + i + "'>" + GT[s][i] + "</option>");
+                    }
+                );
+            }
+        }
+    );
+    function submit()
+    {
+        if($("input[name=spot_name]").val() =="" || $("input[name=spot_name]").val() =="请输入景点名称"){
+            alert("景点名称不能为空!");
+            return false;
+        }
+
+        if($("#province").find("option:selected").text() =="请选择省份"){
+            alert("请选择省份");
+            return false;
+        }
+
+        if($("#city").find("option:selected").text() =="请选择城市"){
+            alert("请选择城市");
+            return false;
+        }
+
+        if($("input[name=address]").val() =="" || $("input[name=address]").val() =="请输入详细地址"){
+            alert("请输入详细地址!");
+            return false;
+        }
+
+        if($("input[name=responsible_person]").val() =="" || $("input[name=responsible_person]").val() =="请输入详细地址"){
+            alert("请输入负责人!");
+            return false;
+        }
+
+        if($("#rule").find("option:selected").text() =="请选择计费规则"){
+            alert("请选择计费规则");
+            return false;
+        }
+        $.ajax({
+             type: "POST",
+             url: "/hardware/spot/spot_add/",
+             data: {spot_name:$("input[name=spot_name]").val(), province:$("#province").find("option:selected").text(), city:$("#city").find("option:selected").text(), address:$("input[name=address]").val(), responsible_person:$("input[name=responsible_person]").val(), rule_id:$("#rule").find("option:selected").text()},
+             dataType: "html",
+             success: function(data){
+                 if (data.split('&')[0] == 'Success')
+                 {
+                     $('.div-add').hide();
+
+                     clear_content();
+
+                     $('.div-content').html(data.split('&')[1]);
+                 }
+                 else{
+                     alert(data.split('&')[1]);
+                 }
+              }
+         });
+    }
+
+    function clear_content()
+    {
+        $("input[name=spot_name]").val('请输入景点名称');
+        $('#province').val('0');
+        $('#city').val('0');
+        $("input[name=address]").val('请输入详细地址');
+        $("input[name=responsible_person]").val('请输入负责人');
+        $('#rule').val('0');
+    }
+
+    function delete_spot(spot_id)
+    {
+        delete_check();
+        $.ajax({
+             type: "POST",
+             url: "/hardware/spot/spot_delete/",
+             data: {spot_id:spot_id},
+             dataType: "html",
+             success: function(data){
+                 if (data.split('&')[0] == 'Success')
+                 {
+
+                     $('.div-content').html(data.split('&')[1]);
+                 }
+                 else{
+                     alert(data.split('&')[1]);
+                 }
+              }
+         });
+    }
+    function delete_check() {
+        var msg = "您真的确定要删除吗？\n\n请确认！";
+        if (confirm(msg)==true){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    </script>
+{% endblock %}

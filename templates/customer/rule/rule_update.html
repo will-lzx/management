@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+    <span>计费规则更新</span>
+{% endblock %}
+
+{% block content %}
+    <div>
+        <a href="/customer/rule/" name="return">返回</a>
+    </div>
+    <div class="div-update">
+        <table  class="div-table">
+            <tr>
+                <td>开始时间长度</td>
+                <td>
+                    <input name="time_long" required value="{{ rule.start_time_long }}" onblur="mblur('请输入开始时间长度')" onclick="mclick('请输入开始时间长度')">小时
+                </td>
+            </tr>
+            <tr>
+                <td>单价</td><td><input name="unit_price" required value='{{ rule.unit_price }}' onblur="mblur('请输入单价')" onclick="mclick('请输入单价')">元</td>
+            </tr>
+            <tr>
+                <td>是否生效</td>
+                <td>
+                    <input type="radio" value="是" name="is_valid"
+                           {% ifequal rule.is_valid 1 %}checked{% endifequal %}>是
+                    <input type="radio" value="否" name="is_valid" {% ifequal rule.is_valid 0 %}checked{% endifequal %}>否
+                </td>
+            </tr>
+            <tr>
+                <td>操作人</td><td><input name="operator" required value="{{ rule.operator }}" onblur="mblur('请输入操作人')" onclick="mclick('请输入操作人')"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="提交" onclick="submit({{ rule.id }})"></td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="/static/js/jquery-3.2.1.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+              }});
+        });
+
+        function submit(rule_id)
+        {
+            if($("input[name=time_long]").val() =="" || $("input[name=time_long]").val() =="请输入开始时间长度"){
+                alert("时间长度不能为空!");
+                return false;
+            }
+
+            if($("input[name=unit_price]").val() =="" || $("input[name=unit_price]").val()=="请输入单价"){
+                alert("单价不能为空!");
+                return false;
+            }
+
+            if($("input[name=operator]").val() =="" || $("input[name=operator]").val() =="请输入操作人"){
+                alert("操作人不能为空!");
+                return false;
+            }
+            var is_valid = $("input[name='is_valid']:checked").val();
+            if (is_valid == '是')
+            {
+                is_valid = 1;
+            }
+            else
+            {
+                is_valid = 0;
+            }
+
+            $.ajax({
+                 type: "POST",
+                 url: "/customer/rule/rule_update_submit/",
+                 data: {time_long:$("input[name=time_long]").val(), unit_price:$("input[name=unit_price]").val(), is_valid:is_valid, operator:$("input[name=operator]").val(), rule_id:rule_id},
+                 dataType: "html",
+                 success: function(data){
+                     if (data.split('&')[0] == 'Success')
+                     {
+                         location = location.href.split('rule_update')[0];
+                     }
+                     else{
+                         alert(data.split('&')[1]);
+                     }
+                  }
+             });
+
+
+        }
+
+        function mclick(expect_value){
+            if(event.srcElement.value==expect_value)
+                event.srcElement.value="";
+        }
+
+        function mblur(expect_value){
+            if(event.srcElement.value=="")
+                event.srcElement.value=expect_value;
+        }
+
+        function update_rule(rule_id){
+            $.ajax({
+                 type: "POST",
+                 url: "/customer/rule/rule_update/",
+                 data: {rule_id:rule_id},
+                 dataType: "html",
+                 success: function(data){
+                     if (data.split('&')[0] == 'Success')
+                     {
+                         $('.div-add').hide();
+
+                         $("input[name=time_long]").val('');
+                         $("input[name=unit_price]").val('');
+                         $("input[name=operator]").val('');
+
+                         $('.div-content').html(data.split('&')[1]);
+                     }
+                     else{
+                         alert(data.split('&')[1]);
+                     }
+                  }
+             });
+        }
+        function delete_rule(rule_id)
+        {
+            delete_check();
+            $.ajax({
+                 type: "POST",
+                 url: "/customer/rule/rule_delete/",
+                 data: {rule_id:rule_id},
+                 dataType: "html",
+                 success: function(data){
+                     if (data.split('&')[0] == 'Success')
+                     {
+                         $('.div-add').hide();
+
+                         $("input[name=time_long]").val('');
+                         $("input[name=unit_price]").val('');
+                         $("input[name=operator]").val('');
+
+                         $('.div-content').html(data.split('&')[1]);
+                     }
+                     else{
+                         alert(data.split('&')[1]);
+                     }
+                  }
+             });
+        }
+
+        function delete_check() {
+            var msg = "您真的确定要删除吗？\n\n请确认！";
+            if (confirm(msg)==true){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+    </script>
+{% endblock %}

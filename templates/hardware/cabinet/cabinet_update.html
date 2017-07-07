@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+    <span>景点更新</span>
+{% endblock %}
+
+{% block content %}
+    <div>
+        <a href="/hardware/cabinet/" name="return">返回</a>
+    </div>
+    <div class="div-update">
+        <table class="div-table">
+            <tr>
+                <td>编号</td>
+                <td>
+                    <input name="number" required value="{{ cabinet.number }}" onblur="mblur('请输入机柜编号')" onclick="mclick('请输入机柜编号')">
+                </td>
+            </tr>
+            <tr>
+                <td>二维码</td>
+                <td>
+                    <input name="two_dimension" required value="{{ cabinet.two_dimension_code }}" onblur="mblur('请输入机柜二维码')" onclick="mclick('请输入机柜二维码')">
+                </td>
+            </tr>
+            <tr>
+                <td>所属景区</td>
+                <td>
+                    <select id="spot">
+                        <option value="0">请选择所属景区</option>
+                        {% if spots %}
+                            {% for spot in spots %}
+                                <option value="{{ spot.id }}" {% ifequal cabinet.spot_id spot.id %}selected{% endifequal %}>{{ spot.name }}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>容量</td>
+                <td>
+                    <input name="capacity" required value="{{ cabinet.capacity }}" onblur="mblur('请输入机柜容量')" onclick="mclick('请输入机柜容量')">
+                </td>
+            </tr>
+            <tr>
+                <td>状态</td>
+                <td>
+                    <input name="status" required value="{{ cabinet.status }}" onblur="mblur('请输入机柜状态')" onclick="mclick('请输入机柜状态')">
+                </td>
+            </tr>
+            <tr>
+                <td>经度</td>
+                <td>
+                    <input name="lat" required value="{{ cabinet.lat }}" onblur="mblur('请输入机柜经度')" onclick="mclick('请输入机柜经度')">
+                </td>
+            </tr>
+            <tr>
+                <td>纬度</td>
+                <td>
+                    <input name="lon" required value="{{ cabinet.lon }}" onblur="mblur('请输入机柜纬度')" onclick="mclick('请输入机柜纬度')">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><input type="submit" value="提交" onclick="submit({{ cabinet.id }})"></td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="/static/js/jquery-3.2.1.js"></script>
+    <script src="/static/js/province_city.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+              }});
+        });
+
+        $.each(
+            GP,    function(i){
+                $("#province").append("<option value='" + i + "'>" + GP[i] + "</option>");
+            }
+        );
+
+        $("#province").change(
+            function () {
+                var s = $("#province").val();
+                $("#city").get(0).selectedIndex = 0 ;
+                if (s != 0)
+                {
+                    $("#city").empty();
+                    $.each(
+                        GT[s],    function(i){
+                        $("#city").append("<option value='" + i + "'>" + GT[s][i] + "</option>");
+                        }
+                    );
+                }
+            }
+        );
+
+        function submit(cabinet_id)
+        {
+            if($("input[name=number]").val() =="" || $("input[name=number]").val() =="请输入机柜编号"){
+                alert("机柜编号不能为空!");
+                return false;
+            }
+
+            if($("input[name=two_dimension]").val() =="" || $("input[name=two_dimension]").val() =="请输入机柜二维码"){
+                alert("机柜二维码不能为空!");
+                return false;
+            }
+
+            if($("#spot").find("option:selected").text() =="请选择所属景区"){
+                alert("请选择所属景区");
+                return false;
+            }
+
+            if($("input[name=capacity]").val() =="" || $("input[name=capacity]").val() =="请输入机柜容量"){
+                alert("请输入机柜容量!");
+                return false;
+            }
+
+            if($("input[name=status]").val() =="" || $("input[name=status]").val() =="请输入机柜状态"){
+                alert("请输入机柜状态!");
+                return false;
+            }
+
+            if($("input[name=lat]").val() =="" || $("input[name=lat]").val() =="请输入机柜经度"){
+                alert("请输入机柜经度!");
+                return false;
+            }
+
+            if($("input[name=lon]").val() =="" || $("input[name=lon]").val() =="请输入机柜纬度"){
+                alert("请输入机柜纬度!");
+                return false;
+            }
+
+            $.ajax({
+                 type: "POST",
+                 url: "/hardware/cabinet/cabinet_update_submit/",
+                 data: {number:$("input[name=number]").val(), two_dimension:$("input[name=two_dimension]").val(), spot_id:$("#spot").find("option:selected").val(), capacity:$("input[name=capacity]").val(), status:$("input[name=status]").val(), lat:$("input[name=lat]").val(), lon:$("input[name=lon]").val(), cabinet_id: cabinet_id},
+                 dataType: "html",
+                 success: function(data){
+                     if (data.split('&')[0] == 'Success')
+                     {
+                         location = location.href.split('cabinet_update')[0];
+                     }
+                     else{
+                         alert(data.split('&')[1]);
+                     }
+                  }
+             });
+
+
+        }
+
+        function mclick(expect_value){
+            if(event.srcElement.value==expect_value)
+                event.srcElement.value="";
+        }
+
+        function mblur(expect_value){
+            if(event.srcElement.value=="")
+                event.srcElement.value=expect_value;
+        }
+
+
+    </script>
+{% endblock %}

@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load own_tag %}
+{% block title %}
+    自拍杆管理
+{% endblock %}
+
+{% block content %}
+    <div>
+        <a href="#" onclick="pole_add()">添加</a>
+    </div>
+    <div class="div-add">
+        <table>
+            <tr>
+                <td>自拍杆编号</td>
+                <td><input name="number" required value="请输入自拍杆编号" onblur="mblur('请输入自拍杆编号')" onclick="mclick('请输入自拍杆编号')"></td>
+            </tr>
+            <tr>
+                <td>机柜编号</td>
+                <td>
+                    <select id="cabinet_number">
+                        <option value="0">请选择机柜编号</option>
+                        {% for cabinet in cabinets %}
+                            <option value="{{ cabinet.id }}">{{ cabinet.number }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="提交" onclick="submit()"></td>
+            </tr>
+        </table>
+        <div>
+            <a href="#" onclick="cancel_add()">取消</a>
+        </div>
+    </div>
+    <div class="div-content">
+        <table>
+            <tr>
+                <td rowspan="2">编号</td>
+                <td rowspan="2">机柜编号</td>
+                <td rowspan="2">创建时间</td>
+                <td rowspan="2">更新时间</td>
+                <td colspan="2">操作</td>
+            </tr>
+            <tr>
+                <td>更新</td>
+                <td>删除</td>
+            </tr>
+
+                {% if poles %}
+                    {% for pole in poles %}
+                        <tr>
+                            <td>{{ pole.number }}</td>
+                            <td>
+                                {% for cabinet in cabinets %}
+                                    {% ifequal cabinet.id pole.cabinet_id %}
+                                        {{ cabinet.number }}
+                                    {% endifequal %}
+                                {% endfor %}
+                            </td>
+                            <td>{{ pole.create_time | datetime_format }}</td>
+                            <td>{{ pole.update_time | datetime_format }}</td>
+                            <td><a href="/hardware/pole/pole_update/{{ pole.id }}">更新</a></td>
+                            <td><a href="#" onclick="delete_pole({{ pole.id }})">删除</a></td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    </tr>
+                        <td colspan="6">No poles</td>
+                    </tr>
+                {% endif %}
+
+        </table>
+    </div>
+    <script src="/static/js/jquery-3.2.1.js"></script>
+    <script>
+
+        $.ajaxSetup({data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+        }});
+
+        $(document).ready(function() {
+
+        });
+
+        function pole_add()
+        {
+            $('.div-add').show();
+        }
+
+        function cancel_add()
+        {
+            clear_add();
+            $('.div-add').hide();
+        }
+
+        function mclick(expect_value){
+            if(event.srcElement.value==expect_value)
+                event.srcElement.value="";
+        }
+
+        function mblur(expect_value){
+            if(event.srcElement.value=="")
+                event.srcElement.value=expect_value;
+        }
+
+        function submit()
+        {
+            if($("input[name=number]").val() =="" || $("input[name=number]").val() =="请输入自拍杆编号"){
+                alert("自拍杆编号不能为空!");
+                return false;
+            }
+
+            if($("#cabinet_number").find("option:selected").text() =="请选择机柜编号"){
+                alert("机柜编号不能为空!");
+                return false;
+            }
+
+            $.ajax({
+                 type: "POST",
+                 url: "/hardware/pole/pole_add/",
+                 data: {number:$("input[name=number]").val(), cabinet_id:$("#cabinet_number").find("option:selected").val()},
+                 dataType: "html",
+                 success: function(data){
+                     if (data.split('&')[0] == 'Success')
+                     {
+                         $('.div-add').hide();
+
+                         clear_add();
+
+                         $('.div-content').html(data.split('&')[1]);
+                     }
+                     else{
+                         alert(data.split('&')[1]);
+                     }
+                  }
+             });
+        }
+
+        function delete_pole(pole_id)
+        {
+            delete_check();
+            $.ajax({
+                 type: "POST",
+                 url: "/hardware/pole/pole_delete/",
+                 data: {pole_id:pole_id},
+                 dataType: "html",
+                 success: function(data){
+                     if (data.split('&')[0] == 'Success')
+                     {
+                         $('.div-content').html(data.split('&')[1]);
+                     }
+                     else{
+                         alert(data.split('&')[1]);
+                     }
+                  }
+             });
+        }
+
+        function clear_add(){
+            $("input[name=number]").val('请输入自拍杆编号');
+            $('#cabinet_number').val('0');
+        }
+
+        function delete_check() {
+            var msg = "您真的确定要删除吗？\n\n请确认！";
+            if (confirm(msg)==true){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    </script>
+{% endblock %}

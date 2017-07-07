@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" dir="ltr">
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>轻拍科技-{% block title %}{% endblock %}</title>
+    <meta name="description" content="自拍神器 是旅游加共享的平台，通过共享自拍杆为起点，实现轻装旅行，随时自拍。轻拍科技是解决在景区游玩时想要自拍，却没有或忘带自拍杆的用户，而通过租借共享的方式便捷的拿到自拍杆，通过公众号找到景区内任意最近机柜点可归还，并解决手机应急充电的问题。">
+    <meta name="keywords" content="轻拍科技 自拍杆 共享自拍杆 共享经济 共享单车／共享充电宝／共享雨伞／共享篮球／共享按摩椅／共享直升机 自拍 旅游自拍 共享租赁 共享风口">
+    <link href="{% static 'favicon.ico' %}" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css"/>
+
+</head>
+
+<body >
+<div id="head_top">
+
+        <div id="logo">
+            <a href="/" target="_self" title="回首页"><img src="/static/images/logo1.jpg" border="0" onMouseOver="this.src='/static/images/logo2.jpg'" onMouseOut="this.src='/static/images/logo1.jpg'" /></a>
+        </div>
+
+        <div id="navigation">
+            <ul class="menu">
+                <li>
+                    <a href="/"><span class="menutitle">首页</span><span
+                            class="menudesc"></span></a>
+                </li>
+                <li>
+
+                    <ul>
+                        <li>
+                            <a href="/hardware/"><span class="menutitle">硬件管理</span><span
+                            class="menudesc"></span></a>
+                        </li>
+                        <li>
+                            <a href="/hardware/cabinet/"><span class="menutitle">机柜</span><span
+                            class="menudesc"></span></a>
+                        </li>
+                        <li>
+                            <a href="/hardware/pole/"><span class="menutitle">自拍杆</span><span
+                            class="menudesc"></span></a>
+                        </li>
+                        <li>
+                            <a href="/hardware/spot/"><span class="menutitle">景区</span><span
+                            class="menudesc"></span></a>
+                        </li>
+                    </ul>
+
+                </li>
+                <li>
+
+                    <ul>
+                        <li>
+                            <a href="/customer/"><span class="menutitle">客户管理</span><span
+                            class="menudesc"></span></a>
+                        </li>
+                        <li>
+                            <a href="/customer/rule/"><span class="menutitle">计费规则</span><span
+                            class="menudesc"></span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/analysis/"><span class="menutitle">数据统计</span><span
+                            class="menudesc"></span></a>
+                </li>
+            </ul>
+        </div>
+</div>
+
+{% block content %}
+{% endblock %}
+
+<div class="foot_cont_bq">
+    杭州轻拍科技有限公司&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright@2017 浙ICP备237970098号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;咨询电话：0571-88809090&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;客服邮箱：kf@relalive.com
+</div>
+
+</body>
