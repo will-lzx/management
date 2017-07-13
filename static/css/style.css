@@ -35,3 +35,6 @@ padding:0;
 .div-add{
     display: none;
 }
+
+.login_logo{width: 600px;height: 50px;margin-top: 30%;margin-left: auto;margin-right: auto;background: url("/static/images/logo_re.jpg")  no-repeat;text-align: center;font-size: 18px;line-height: 30px;font-weight: 200;}
+.
