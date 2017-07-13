@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load own_tag %}
+{% block title %}
+    租借详情
+{% endblock %}
+
+{% block content %}
+    <div>
+
+    </div>
+    <div>
+        <table>
+            <tr>
+                <td>开始时间</td>
+                <td>归还时间</td>
+                <td>租金</td>
+                <td>当前状态</td>
+                <td>自拍杆ID</td>
+                <td>计费规则</td>
+            </tr>
+            <tr>
+                {% if lendhistories %}
+                    {% for lendhistory in lendhistories %}
+                        <td>{{ lendhistory.start_time }}</td>
+                        <td>{{ lendhistory.return_time }}</td>
+                        <td>{{ lendhistory.money }}</td>
+                        <td>{{ lendhistory.status }}</td>
+                        <td>{{ lendhistory.pole_id }}</td>
+                        <td>{{ lendhistory.rule_id }}</td>
+                    {% endfor %}
+                {% else %}
+                    <td colspan="6">No lend history still</td>
+                {% endif %}
+            </tr>
+        </table>
+    </div>
+
+{% endblock %}

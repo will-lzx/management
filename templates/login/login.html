@@ -1,0 +1,97 @@
+{% extends "login/base.html" %}
+{% load static %}
+
+{% block head %}
+    <div class="title">
+        <span>手机验证</span>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+    <div class="form">
+        <div class="div-phone">
+            {% csrf_token %}
+            <input id="phone" class="infos" placeholder="输入手机号码" />
+       </div>
+        <div class="div-ranks">
+            <input id="ranks" class="infos" placeholder="输入验证码" /><a href="javascript:;" class="send1" onclick="sends.send();">获取验证码</a>
+       </div>
+        <div class="div-conform">
+            <a href="javascript:;" class="conform" onclick="sends.conform();">开始</a>
+        </div>
+        <div class="div-agreement">
+            <span>点击开始，即表示阅读并同意<a href="/login/agreement">自拍杆使用协议</a></span>
+        </div>
+        <div>
+            <span id="tip"></span>
+        </div>
+    </div>
+
+    <script src="/static/js/jquery-3.2.1.js"></script>
+    <script src="/static/js/relalive.js"></script>
+    <script>
+        $.ajaxSetup({data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+        }});
+
+        $(document).ready(function() {
+
+        });
+
+        var sends = {
+           checked:1,
+            send:function(){
+                var numbers = /^1\d{10}$/;
+                var val = $('#phone').val().replace(/\s+/g,""); //获取输入手机号码
+              if($('.div-ranks').find('span').length == 0 && $('.div-ranks a').attr('class') == 'send1'){
+                  if(!numbers.test(val) || val.length ==0){
+                        showTip('手机格式错误', 'danger');
+                      return false;
+                  }
+              }
+              if(numbers.test(val)){
+                  var time = 60;
+                    $('.div-ranks span').remove();
+                    function timeCountDown(){
+                        if(time==0){
+                            clearInterval(timer);
+                            $('.div-ranks a').addClass('send1').removeClass('send0').html("发送验证码");
+                         sends.checked = 1;
+                        return true;
+                    }
+                    $('.div-ranks a').html(time+"s后重发");
+                    $('.div-ranks a').attr("unable",true);
+                    time--;
+                    return false;
+                    sends.checked = 0;
+                }
+                $('.div-ranks a').addClass('send0').removeClass('send1');
+
+                timeCountDown();
+                var timer = setInterval(timeCountDown,1000);
+            }
+           },
+            conform:function()
+            {
+
+                $.ajax({
+                 type: "POST",
+                 url: "/home/home_logon/",
+                 data: {mobile_number:$('#phone').val(), verify_code:$('#ranks').val()},
+                 dataType: "html",
+                 success: function(data){
+                     if (data.split('&')[0] == 'Success')
+                     {
+                         location = 'http://127.0.0.1:8000/home/';
+                     }
+                     else{
+                         showTip('验证码输入错误', 'danger');
+                     }
+                  }
+             });
+            }
+        };
+
+    </script>
+{% endblock %}

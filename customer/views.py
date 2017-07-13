@@ -3,13 +3,85 @@ from home.models import *
 from django.http import HttpResponse
 from datetime import *
 # Create your views here.
+from home.templatetags.own_tag import get_lendcount
 
 
 def customer(request):
     template_name = 'customer/customer_index.html'
 
     customers = Customer.objects.all()
+
     context = {'customers': customers}
+
+    response = render(request, template_name, context)
+    return response
+
+
+def search(request):
+    weixin_number = request.POST.get('weixin_number')
+    mobile_number = request.POST.get('mobile_number')
+    deposit_status = request.POST.get('deposit_status')
+
+    if weixin_number:
+        if mobile_number:
+            if deposit_status:
+                customers = Customer.objects.filter(weixin_number__contains=weixin_number, mobile_number__contains=mobile_number, deposit=deposit_status)
+            else:
+                customers = Customer.objects.filter(weixin_number__contains=weixin_number,
+                                                    mobile_number__contains=mobile_number)
+        else:
+            if deposit_status:
+                customers = Customer.objects.filter(weixin_number__contains=weixin_number, deposit=deposit_status)
+            else:
+                customers = Customer.objects.filter(weixin_number__contains=weixin_number)
+    else:
+        if mobile_number:
+            if deposit_status:
+                customers = Customer.objects.filter(mobile_number__contains=mobile_number, deposit=deposit_status)
+            else:
+                customers = Customer.objects.filter(mobile_number__contains=mobile_number)
+        else:
+            if deposit_status:
+                customers = Customer.objects.filter(deposit=deposit_status)
+            else:
+                customers = ''
+
+    html = get_customer(customers)
+    return HttpResponse('Success&' + html)
+
+
+def get_customer(customers):
+    html = '<table><tr><td>微信号</td>' \
+           '<td>手机号</td>' \
+           '<td>支付宝帐号</td>' \
+           '<td>蚂蚁信用分</td>' \
+           '<td>押金</td>' \
+           '<td>注册时间</td>' \
+           '<td>租用次数</td>' \
+           '<td>操作</td></tr>'
+
+    if not customers:
+        html += '<tr><td colspan="6">No customers still</td></tr>'
+    else:
+        for customer in customers:
+            html += '<tr><td>' + str(customer.weixin_number) \
+                    + '</td><td>' + str(customer.mobile_number) + '</td><td>' \
+                    + str(customer.alipay) + '</td><td>' \
+                    + str(customer.credit_score) + '</td><td>' \
+                    + str(customer.deposit) + '</td><td>' \
+                    + str(customer.create_time.strftime('%Y-%m-%d %H:%M:%S')) + '</td><td>' \
+                    + str(get_lendcount(customer.weixin_number)) + '</td><td><a href="/customer/lendhistory/' \
+                    + str(customer.mobile_number) +'" >租借详情</a></td></tr>'
+
+    html += '</table>'
+    return html
+
+
+def lendhistory(request, mobile_number):
+    lendhistories = LendHistory.objects.filter(mobile_number=mobile_number).order_by('-start_time')
+    template_name = 'customer/lendhistory_by_customer.html'
+
+    context = {'lendhistories': lendhistories}
 
     response = render(request, template_name, context)
     return response

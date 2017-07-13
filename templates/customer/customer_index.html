@@ -1,13 +1,23 @@
 {% extends "base.html" %}
 
 {% load static %}
-
+{% load own_tag %}
 {% block title %}
     客户管理
 {% endblock %}
 
 {% block content %}
-    <div class="div-home">
+    <div>
+        <input id="weixin_number">
+        <input id="mobile_number">
+        <select id="deposit_status">
+            <option value="0">已归还</option>
+            <option value="1">未归还</option>
+            <option value="2">购买</option>
+        </select>
+        <input type="button" value="查找" onclick="search()">
+    </div>
+    <div class="div-table">
         <table>
             <tr>
                 <td>微信号</td>
@@ -15,22 +25,66 @@
                 <td>支付宝帐号</td>
                 <td>蚂蚁信用分</td>
                 <td>押金</td>
-                <td>押金状态</td>
+                <td>注册时间</td>
+                <td>租用次数</td>
+                <td>操作</td>
             </tr>
-            <tr>
-                {% if customers %}
-                    {% for customer in customers %}
+            {% if customers %}
+                {% for customer in customers %}
+                    <tr>
                         <td>{{ customer.weixin_number }}</td>
                         <td>{{ customer.mobile_number }}</td>
                         <td>{{ customer.alipay }}</td>
                         <td>{{ customer.credit_score }}</td>
                         <td>{{ customer.deposit }}</td>
-                        <td>{{ customer.deposit_status }}</td>
-                    {% endfor %}
-                {% else %}
+                        <td>{{ customer.create_time | datetime_format }}</td>
+                        <td>{{ customer.weixin_number| get_lendcount }}</td>
+                        <td><a href="/customer/lendhistory/{{ customer.mobile_number }}" >租借详情</a></td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
                     <td colspan="6">No customers still</td>
-                {% endif %}
-            </tr>
+                </tr>
+            {% endif %}
         </table>
     </div>
+
+    <script src="/static/js/jquery-3.2.1.js"></script>
+    <script>
+
+        $.ajaxSetup({data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+        }});
+
+        $(document).ready(function() {
+
+        });
+
+        function search()
+        {
+            var weixin_number = $('#weixin_number').val();
+            var mobile_number = $('#mobile_number').val();
+            var deposit_status = $("#spot").find("option:selected").text();
+
+            $.ajax({
+                 type: "POST",
+                 url: "/customer/search/",
+                 data: {weixin_number:weixin_number, mobile_number:mobile_number, deposit_status:deposit_status},
+                 dataType: "html",
+                 success: function(data){
+                     if (data.split('&')[0] == 'Success')
+                     {
+                         $('.div-table').html(data.split('&')[1]);
+                     }
+                     else{
+                         alert(data.split('&')[1]);
+                     }
+                  }
+             });
+
+        }
+
+    </script>
+
 {% endblock %}

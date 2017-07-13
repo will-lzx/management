@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth.decorators import login_required
 from django.views.generic import RedirectView
+from home.views import home_login, agreement
 admin.autodiscover()
 
 urlpatterns = [
@@ -25,4 +27,6 @@ urlpatterns = [
     url(r'^hardware/', include('hardware.urls')),
     url(r'^customer/', include('customer.urls')),
     url(r'^analysis/', include('analysis.urls')),
+    # url(r'^accounts/login/$', home_login, name='home_login'),
+    url(r'^login/agreement/$', agreement, name='agreement'),
 ]

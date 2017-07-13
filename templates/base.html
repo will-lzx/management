@@ -18,66 +18,66 @@
 </head>
 
 <body >
-<div id="head_top">
 
-        <div id="logo">
-            <a href="/" target="_self" title="回首页"><img src="/static/images/logo1.jpg" border="0" onMouseOver="this.src='/static/images/logo2.jpg'" onMouseOut="this.src='/static/images/logo1.jpg'" /></a>
+        <div class="div-head">
+            <div id="logo">
+                <a href="/" target="_self" title="回首页"><img src="/static/images/logo1.jpg" border="0" onMouseOver="this.src='/static/images/logo2.jpg'" onMouseOut="this.src='/static/images/logo1.jpg'" /></a>
+            </div>
+            <div id="div-user">
+                {% if user.is_authenticated %}
+                    <span>欢迎您:{{user.username}}</span>
+                    <a href="/home/home_logout/">退出</a>
+                {% endif %}
+            </div>
         </div>
 
-        <div id="navigation">
-            <ul class="menu">
-                <li>
-                    <a href="/"><span class="menutitle">首页</span><span
-                            class="menudesc"></span></a>
-                </li>
-                <li>
 
+        <div class="div-left">
+            <ul>
+                <li><a href='/'><img src="{% static '/images/menu/home.png' %}" alt=""/>首页</a></li>
+                <li><a href='/customer/'><img src="{% static '/images/menu/customer.png' %}" alt=""/>用户管理</a></li>
+                <li>
+                    <a href='/hardware/cabinet/'><img src="{% static '/images/menu/equipment.png' %}" alt=""/>设备管理</a>
                     <ul>
                         <li>
-                            <a href="/hardware/"><span class="menutitle">硬件管理</span><span
-                            class="menudesc"></span></a>
+                            <a href='/hardware/cabinet/'>机柜管理</a>
                         </li>
                         <li>
-                            <a href="/hardware/cabinet/"><span class="menutitle">机柜</span><span
-                            class="menudesc"></span></a>
-                        </li>
-                        <li>
-                            <a href="/hardware/pole/"><span class="menutitle">自拍杆</span><span
-                            class="menudesc"></span></a>
-                        </li>
-                        <li>
-                            <a href="/hardware/spot/"><span class="menutitle">景区</span><span
-                            class="menudesc"></span></a>
+                            <a href='/hardware/pole/'>自拍杆管理</a>
                         </li>
                     </ul>
 
                 </li>
-                <li>
-
-                    <ul>
-                        <li>
-                            <a href="/customer/"><span class="menutitle">客户管理</span><span
-                            class="menudesc"></span></a>
-                        </li>
-                        <li>
-                            <a href="/customer/rule/"><span class="menutitle">计费规则</span><span
-                            class="menudesc"></span></a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="/analysis/"><span class="menutitle">数据统计</span><span
-                            class="menudesc"></span></a>
-                </li>
+                <li><a href='/hardware/spot/'><img src="{% static '/images/menu/spot.png' %}" alt=""/>景点管理</a></li>
+                <li><a href='/'><img src="{% static '/images/menu/lend.png' %}" alt=""/>租借管理</a></li>
+                <li><a href='/'><img src="{% static '/images/menu/money.png' %}" alt=""/>对账管理</a></li>
+                <li><a href='/analysis/'><img src="{% static '/images/menu/analysis.png' %}" alt=""/>数据统计</a></li>
             </ul>
-        </div>
-</div>
 
-{% block content %}
-{% endblock %}
+            <div>
+                <span>联系电话</span><br>
+                <span>{{ user.username }}</span>
+            </div>
+        </div>
+        <div class="div-content">
+            {% block content %}
+            {% endblock %}
+        </div>
 
 <div class="foot_cont_bq">
     杭州轻拍科技有限公司&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright@2017 浙ICP备237970098号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;咨询电话：0571-88809090&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;客服邮箱：kf@relalive.com
 </div>
+
+<script src="/static/js/jquery-3.2.1.js"></script>
+    <script src="/static/js/relalive.js"></script>
+    <script>
+        $.ajaxSetup({data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+        }});
+
+        $(document).ready(function() {
+
+        });
+     </script>
 
 </body>

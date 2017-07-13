@@ -14,16 +14,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.contrib.auth.decorators import login_required
+
 from customer.views import *
 
 urlpatterns = [
-    url(r'^$', customer, name='customer'),
+    url(r'^$', login_required(customer, login_url='/home/home_login/'), name='customer'),
+    url(r'^lendhistory/(?P<mobile_number>.+)/$', login_required(lendhistory, login_url='/home/home_login/'), name='lendhistory'),
+    url(r'^search/$', login_required(search, login_url='/home/home_login/'), name='search'),
 
     # rule
-    url(r'^rule/$', rule, name='rule'),
-    url(r'^rule/rule_add/$', rule_add, name='rule_add'),
-    url(r'^rule/rule_delete/$', rule_delete, name='rule_delete'),
-    url(r'^rule/rule_update/(?P<rule_id>.+)/$', rule_update, name='rule_update'),
-    url(r'^rule/rule_update_submit/$', rule_update_submit, name='rule_update_submit'),
+    url(r'^rule/$', login_required(rule, login_url='/home/home_login/'), name='rule'),
+    url(r'^rule/rule_add/$', login_required(rule_add, login_url='/home/home_login/'), name='rule_add'),
+    url(r'^rule/rule_delete/$', login_required(rule_delete, login_url='/home/home_login/'), name='rule_delete'),
+    url(r'^rule/rule_update/(?P<rule_id>.+)/$', login_required(rule_update, login_url='/home/home_login/'), name='rule_update'),
+    url(r'^rule/rule_update_submit/$', login_required(rule_update_submit, login_url='/home/home_login/'), name='rule_update_submit'),
 
 ]

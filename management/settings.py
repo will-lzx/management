@@ -139,3 +139,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     '/var/www/static/',
 ]
+
+tmp_pwd = 'Password'
+tmp_mail = 'tmp_mail@relalive.com'

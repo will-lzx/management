@@ -27,6 +27,7 @@ class Customer(models.Model):
     credit_score = models.FloatField()
     deposit = models.FloatField()
     deposit_status = models.IntegerField()
+    create_time = models.DateTimeField()
 
 
 class Rule(models.Model):
