@@ -83,7 +83,7 @@
                  success: function(data){
                      if (data.split('&')[0] == 'Success')
                      {
-                         location = 'http://127.0.0.1:8000/home/';
+                         location = location.origin + '/home/';
                      }
                      else{
                          showTip('验证码输入错误', 'danger');
