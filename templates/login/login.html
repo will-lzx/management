@@ -7,18 +7,17 @@
       <div class="login_ad">管理后台</div>
    </div>
 
-
 {% endblock %}
 
 {% block content %}
     <div class="login_cont">
       <div class="bd_cont">
         <div class="form">
-        <div class="div-phone">
+        <div class="bd_input">
             {% csrf_token %}
-            <input id="phone" class="infos" placeholder="输入手机号码" />
+            <input id="phone" class="infos" placeholder="登记的管理员手机号" />
        </div>
-        <div class="div-ranks">
+        <div class="bd_input">
             <input id="ranks" class="infos" placeholder="输入验证码" /><a href="javascript:;" class="send1" onclick="sends.send();">获取验证码</a>
        </div>
         <div class="div-conform">
