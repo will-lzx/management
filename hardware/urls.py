@@ -36,8 +36,8 @@ urlpatterns = [
     url(r'^pole/pole_update_submit/$', login_required(pole_update_submit, login_url='/home/home_login/'), name='pole_update_submit'),
 
     # spot
-    url(r'^spot/$', spot, name='spot'),
-    url(r'^spot/spot_add/$', spot_add, name='spot_add'),
+    url(r'^spot/$', login_required(spot, login_url='/home/home_login/'), name='spot'),
+    url(r'^spot/spot_add/$', login_required(spot_add, login_url='/home/home_login/'), name='spot_add'),
     url(r'^spot/spot_delete/$', spot_delete, name='spot_delete'),
     url(r'^spot/spot_update/(?P<spot_id>.+)/$', spot_update, name='spot_update'),
     url(r'^spot/spot_update_submit/$', spot_update_submit, name='spot_update_submit'),

@@ -18,5 +18,13 @@ from django.contrib.auth.decorators import login_required
 from home.views import *
 
 urlpatterns = [
-    url(r'^$', home, name='home'),
+    url(r'^$', login_required(home, login_url='/home/home_login/'), name='home'),
+
+    url(r'^home_login/$', home_login, name='home_login'),
+
+    url(r'^home_logon/$', home_logon, name='home_logon'),
+
+    url(r'^home_logout/$', home_logout, name='home_logout'),
+
+
 ]
