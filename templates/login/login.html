@@ -12,7 +12,8 @@
 
 {% block content %}
     <div class="login_cont">
-    <div class="form">
+      <div class="bd_cont">
+        <div class="form">
         <div class="div-phone">
             {% csrf_token %}
             <input id="phone" class="infos" placeholder="输入手机号码" />
@@ -29,7 +30,8 @@
         <div>
             <span id="tip"></span>
         </div>
-    </div>
+        </div>
+      </div>
     </div>
     <script src="/static/js/jquery-3.2.1.js"></script>
     <script src="/static/js/relalive.js"></script>
