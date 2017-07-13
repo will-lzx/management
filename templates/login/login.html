@@ -11,6 +11,7 @@
 {% endblock %}
 
 {% block content %}
+    <div class="login_cont">
     <div class="form">
         <div class="div-phone">
             {% csrf_token %}
@@ -29,7 +30,7 @@
             <span id="tip"></span>
         </div>
     </div>
-
+    </div>
     <script src="/static/js/jquery-3.2.1.js"></script>
     <script src="/static/js/relalive.js"></script>
     <script>
