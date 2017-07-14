@@ -51,5 +51,5 @@ padding:0;
 .infos_yzm a{text-decoration: none; color:#0033CC;}
 .infos_yzm a:hover{text-decoration: none; color: #990066;}
 .anniu {float: left;width: 250px;height: 20px; padding: 5px;font-size: 14px; font-weight: 200; margin-top: 15px;background-color:#cc3399;color: white;text-decoration: none;}
-.anniu a{text-decoration: none;width: 250px;height: 20px;background-color:#cc3399;color: white;}
-.anniu a:hover {text-decoration: none;background-color: #cc0099;font-weight: 300;}
+.anniu a{text-decoration: none;background-color:#cc3399;color: white;}
+.anniu a:hover {text-decoration: none;background-color: #cc0099;font-weight: 300;width: 250px;height: 20px;}
