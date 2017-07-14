@@ -43,13 +43,13 @@ padding:0;
 .login_ad{float: left;width: auto;font-size: 36px;font-weight: 400;color: #333333;line-height: 57px;}
 .login_cont{width: 100%;height:346px;margin-top: -150px;background: url("/static/images/login_bg_t.jpg")  repeat-x; }
 .bd_cont{width: 831px;height: 100%;margin: 0 auto;background: url("/static/images/login_bg.jpg")  no-repeat; text-align: center;}
-.bd_input{width: 282px;height: 50px;margin: 0 auto;}
+.bd_input{width: 292px;height: 50px;margin: 0 auto;}
 .first_input{padding-top: 50px;}
 .infos_left{width: 60px;height: 24px;border: 1px solid #990066; border-right: none; padding: 5px;font-size: 14px;margin-top: 15px;float: left;background-color: white;line-height: 24px;}
-.infos_right{width: 200px;height: 24px;border: 1px solid #990066; border-left: none; padding: 5px;font-size: 14px;margin-top: 15px;float: left;}
-.infos_yzm{width: 270px;height: 24px;border: 1px solid #990066;  padding: 5px;font-size: 14px;margin-top: 15px;float: left;color: black;background-color:#ececec;text-align: left;line-height: 24px}
+.infos_right{width: 210px;height: 24px;border: 1px solid #990066; border-left: none; padding: 5px;font-size: 14px;margin-top: 15px;float: left;}
+.infos_yzm{width: 280px;height: 24px;border: 1px solid #990066;  padding: 5px;font-size: 14px;margin-top: 15px;float: left;color: black;background-color:#ececec;text-align: left;line-height: 24px}
 .infos_yzm a{text-decoration: none; color:#0033CC;}
 .infos_yzm a:hover{text-decoration: none; color: #990066;}
 .anniu {display: block;float: left;font-size: 14px; font-weight: 300; margin-top: 15px; line-height: 26px;}
-.anniu a{ padding: 5px;display: block;width: 270px;height: 26px; text-decoration: none;background-color:#cc3399;color: white;}
+.anniu a{ padding: 5px;display: block;width: 280px;height: 26px; text-decoration: none;background-color:#cc3399;color: white;}
 .anniu a:hover{display: block;text-decoration: none;background-color: #cc0099;font-weight: 500;}
