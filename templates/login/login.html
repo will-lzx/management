@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block head %}
-   <div class="login_til">
+    <div class="login_til" xmlns="http://www.w3.org/1999/html">
       <div class="login_logo"><img class="login_img" src="{% static 'images/logo_re.jpg' %}"></div>
       <div class="login_ad">管理后台</div>
    </div>
@@ -12,7 +12,6 @@
 {% block content %}
     <div class="login_cont">
       <div class="bd_cont">
-
         <div class="bd_input first_input">
             <div class="infos_left">手机号：</div>
             {% csrf_token %}
@@ -33,6 +32,8 @@
         </div>
 
       </div>
+        <br class="lx">联系电话：<span class="col">13088900089</span> /  微信咨询：<span class="col">轻拍科技</span></br>
+版权所有 @ 杭州轻拍科技有限公司    浙ICP备17029716号</div>
     </div>
     <script src="/static/js/jquery-3.2.1.js"></script>
     <script src="/static/js/relalive.js"></script>
