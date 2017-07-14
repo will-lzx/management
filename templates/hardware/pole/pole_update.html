@@ -3,69 +3,39 @@
 {% load static %}
 
 {% block title %}
-    <span>景点更新</span>
+    <span>自拍杆更新</span>
 {% endblock %}
 
 {% block content %}
     <div>
-        <a href="/hardware/spot/" name="return">返回</a>
+        <a href="/hardware/pole/" name="return">返回</a>
     </div>
     <div class="div-update">
         <table  class="div-table">
             <tr>
-                <td>景点名称</td>
+                <td>自拍杆编号</td>
                 <td>
-                    <input name="spot_name" required value="{{ spot.name }}" onblur="mblur('请输入景点名称')" onclick="mclick('请输入景点名称')">
+                    <input name="number" required value="{{ pole.number }}" onblur="mblur('请输入自拍杆编号')" onclick="mclick('请输入自拍杆编号')">
                 </td>
             </tr>
             <tr>
-                <td>省</td>
+                <td>机柜编号</td>
                 <td>
-                    <select id="province" name="" size="" >
-
+                    <select id="cabinet_number">
+                        <option value="0">请选择机柜编号</option>
+                        {% for cabinet in cabinets %}
+                            <option {% ifequal cabinet.id pole.cabinet_id %}selected{% endifequal %}>{{ cabinet.number }}</option>
+                        {% endfor %}
                     </select>
                 </td>
             </tr>
             <tr>
-                <td>市</td>
-                <td>
-                    <select id="city" name="" size="">
-
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>详细地址</td>
-                <td>
-                    <input name="address" required value="{{ spot.address }}" onblur="mblur('请输入详细地址')" onclick="mclick('请输入详细地址')">
-                </td>
-            </tr>
-            <tr>
-                <td>负责人</td>
-                <td><input name="responsible_person" required value="{{ spot.responsible_person }}" onblur="mblur('请输入负责人')" onclick="mclick('请输入负责人')"></td>
-            </tr>
-            <tr>
-                <td>计费规则</td>
-                <td>
-                    <select id="rule">
-                        <option value="0">请选择计费规则</option>
-                        {% if rules %}
-                            {% for rule in rules %}
-                                <option {% ifequal spot.rule_id rule.id %}selected{% endifequal %}>{{ rule.id }}</option>
-                            {% endfor %}
-                        {% endif %}
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2"><input type="submit" value="提交" onclick="submit({{ spot.id }})"></td>
+                <td colspan="2"><input type="submit" value="提交" onclick="submit({{ pole.id }})"></td>
             </tr>
         </table>
     </div>
 
     <script src="/static/js/jquery-3.2.1.js"></script>
-    <script src="/static/js/province_city.js"></script>
-
     <script>
         $(document).ready(function() {
             $.ajaxSetup({data: {
@@ -73,77 +43,33 @@
               }});
         });
 
-        $.each(
-            GP,    function(i){
-                $("#province").append("<option value='" + i + "'>" + GP[i] + "</option>");
-            }
-        );
-
-        $("#province").change(
-            function () {
-                var s = $("#province").val();
-                $("#city").get(0).selectedIndex = 0 ;
-                if (s != 0)
-                {
-                    $("#city").empty();
-                    $.each(
-                        GT[s],    function(i){
-                        $("#city").append("<option value='" + i + "'>" + GT[s][i] + "</option>");
-                        }
-                    );
-                }
-            }
-        );
-
-        function submit(spot_id)
+        function submit(pole_id)
         {
-            if($("input[name=spot_name]").val() =="" || $("input[name=spot_name]").val() =="请输入景点名称"){
-            alert("景点名称不能为空!");
-            return false;
-        }
+            if($("input[name=number]").val() =="" || $("input[name=spot_name]").val() =="请输入自拍杆编号"){
+                alert("自拍杆编号不能为空!");
+                return false;
+            }
 
-        if($("#province").find("option:selected").text() =="请选择省份"){
-            alert("请选择省份");
-            return false;
-        }
-
-        if($("#city").find("option:selected").text() =="请选择城市"){
-            alert("请选择城市");
-            return false;
-        }
-
-        if($("input[name=address]").val() =="" || $("input[name=address]").val() =="请输入详细地址"){
-            alert("请输入详细地址!");
-            return false;
-        }
-
-        if($("input[name=responsible_person]").val() =="" || $("input[name=responsible_person]").val() =="请输入详细地址"){
-            alert("请输入负责人!");
-            return false;
-        }
-
-        if($("#rule").find("option:selected").text() =="请选择计费规则"){
-            alert("请选择计费规则");
-            return false;
-        }
+            if($("#cabinet_number").find("option:selected").text() =="请选择机柜编号"){
+                alert("请选择机柜编号");
+                return false;
+            }
 
             $.ajax({
                  type: "POST",
-                 url: "/hardware/spot/spot_update_submit/",
-                 data: {spot_name:$("input[name=spot_name]").val(), province:$("#province").find("option:selected").text(), city:$("#city").find("option:selected").text(), address:$("input[name=address]").val(), responsible_person:$("input[name=responsible_person]").val(), rule_id:$("#rule").find("option:selected").text(), spot_id:spot_id},
+                 url: "/hardware/pole/pole_update_submit/",
+                 data: {number:$("input[name=number]").val(),  cabinet_number:$("#cabinet_number").find("option:selected").text(), pole_id:pole_id},
                  dataType: "html",
                  success: function(data){
                      if (data.split('&')[0] == 'Success')
                      {
-                         location = location.href.split('spot_update')[0];
+                         location = location.href.split('pole_update')[0];
                      }
                      else{
                          alert(data.split('&')[1]);
                      }
                   }
              });
-
-
         }
 
         function mclick(expect_value){

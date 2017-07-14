@@ -117,27 +117,24 @@ def pole_add(request):
 
 def pole_update(request, pole_id):
     pole = Pole.objects.filter(id=pole_id).first()
-    rules = Cabinet.objects.all().order_by('-modify_time')
+    cabinets = Cabinet.objects.all()
     template_name = 'hardware/pole/pole_update.html'
-    context = {'pole': pole, 'rules': rules}
+    context = {'pole': pole, 'cabinets': cabinets}
     response = render(request, template_name, context)
     return response
 
 
 def pole_update_submit(request):
     number = request.POST.get('number')
-    cabinet_id = request.POST.get('cabinet_id')
-
+    cabinet_number = request.POST.get('cabinet_number')
     update_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-
     pole_id = request.POST.get('pole_id')
-
     pole = Pole.objects.filter(id=pole_id).first()
+    cabinet_id = Cabinet.objects.filter(number=cabinet_number).first()
     try:
         pole.number = number
-        pole.cabinet_id = cabinet_id
+        pole.cabinet_id = cabinet_id.id
         pole.update_time = update_time
-
         pole.save()
     except Exception as e:
         html = 'Fail&{0}'.format(e)
