@@ -50,6 +50,6 @@ padding:0;
 .infos_yzm{width: 250px;height: 20px;border: 1px solid #990066;  padding: 5px;font-size: 14px;margin-top: 15px;float: left;color: black;background-color: white;text-align: left;}
 .infos_yzm a{text-decoration: none; color:#0033CC;}
 .infos_yzm a:hover{text-decoration: none; color: #990066;}
-.anniu {display: block;float: left;width: 250px;height: 20px; padding: 5px;font-size: 14px; font-weight: 200; margin-top: 15px;background-color:#cc3399;color: white;text-decoration: none;}
-.anniu a{display: block;width: 250px;height: 20px; text-decoration: none;background-color:#cc3399;color: white;}
-.anniu a:hover{display: block;text-decoration: none;background-color: #cc0099;font-weight: 600;width: 250px;height: 20px;}
+.anniu {display: block;float: left;width: 250px;height: 20px; padding: 5px;font-size: 14px; font-weight: 200; margin-top: 15px;}
+.anniu a{ padding: 5px;display: block;width: 250px;height: 20px; text-decoration: none;background-color:#cc3399;color: white;}
+.anniu a:hover{display: block;text-decoration: none;background-color: #cc0099;font-weight: 400;width: 250px;height: 20px;}
