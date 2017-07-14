@@ -53,5 +53,5 @@ padding:0;
 .anniu {display: block;float: left;font-size: 14px; font-weight: 300; margin-top: 15px; line-height: 26px;}
 .anniu a{ padding: 5px;display: block;width: 280px;height: 26px; text-decoration: none;background-color:#cc3399;color: white;}
 .anniu a:hover{display: block;text-decoration: none;background-color: #cc0099;font-weight: 500;}
-.lx{width: 80%;height: 60px;margin: 0 auto;text-align: center;font-size: 12px;line-height: 20px;color: #333333;}
+.lx{width: 80%;height: 60px;margin: 0 auto;text-align: center;font-size: 12px;line-height: 20px;color: #333333;margin-top: 5px;}
 .col{color: #cc3399;font-weight: 400;}
