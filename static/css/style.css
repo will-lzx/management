@@ -47,7 +47,7 @@ padding:0;
 .first_input{padding-top: 50px;}
 .infos_left{width: 60px;height: 24px;border: 1px solid #990066; border-right: none; padding: 5px;font-size: 14px;margin-top: 15px;float: left;background-color: white;line-height: 24px;}
 .infos_right{width: 200px;height: 24px;border: 1px solid #990066; border-left: none; padding: 5px;font-size: 14px;margin-top: 15px;float: left;}
-.infos_yzm{width: 270px;height: 24px;border: 1px solid #990066;  padding: 5px;font-size: 14px;margin-top: 15px;float: left;color: black;background-color:#fefefe;text-align: left;line-height: 24px}
+.infos_yzm{width: 270px;height: 24px;border: 1px solid #990066;  padding: 5px;font-size: 14px;margin-top: 15px;float: left;color: black;background-color:#f6f6f6;text-align: left;line-height: 24px}
 .infos_yzm a{text-decoration: none; color:#0033CC;}
 .infos_yzm a:hover{text-decoration: none; color: #990066;}
 .anniu {display: block;float: left;font-size: 14px; font-weight: 300; margin-top: 15px; line-height: 26px;}
