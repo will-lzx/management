@@ -45,7 +45,7 @@ padding:0;
 .bd_cont{width: 831px;height: 100%;margin: 0 auto;background: url("/static/images/login_bg.jpg")  no-repeat; text-align: center;}
 .bd_input{width: 100%;height: 60px;margin: 0 auto;}
 .first_input{margin-top: 50px;}
-.infos_left{width: 60px;height: 20px;border: 1px solid #990066; border-right: none; padding: 5px;font-size: 14px;margin-top: 15px;float: left;}
+.infos_left{width: 60px;height: 20px;border: 1px solid #990066; border-right: none; padding: 5px;font-size: 14px;margin-top: 15px;float: left;background-color: white;}
 .infos_right{width: 180px;height: 20px;border: 1px solid #990066; border-left: none; padding: 5px;font-size: 14px;margin-top: 15px;float: left;}
 
 
