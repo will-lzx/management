@@ -71,14 +71,12 @@ padding:0;
 .head_user a:hover{text-decoration: none;color: #cc0099;}
 
 .dh_cont{float: left;height: 100%;background-color: #333333;width: 220px;border-right: 1px solid #CCCCCC;text-align: left;}
-.dh ul.menu { float:left; height: 50px; text-align: left;line-height: 50px; }
-.dh menu {list-style: none; }
-.dh .menu > li { display: block; float: left;width: 180px;text-align: left;font-size: 14px;font-weight: bold;background-color: #cc0099; }
-.dh .menu > li a{text-decoration: none; color: #333333;font-weight: normal;background-color: white;}
-.dh .menu > li a:hover{text-decoration: none;font-weight: bold; }
-.dh_img_sy{width: 30px;height: auto; background: url("/static/images/menu/sy.png")  no-repeat;}
-.dh_img_sy a{width: 30px;height: auto; background: url("/static/images/menu/dd.png")  no-repeat;}
-
-
+.dh_li{width: 200px;height: 30px;padding: 10px;border: 1px dotted #ececec;}
+.dh_li_icon{float: left;width: 30px;height: 30px;border: none;}
+.dh_li_til{padding-left: 20px;float: left;font-size: 14px;font-weight: 300;color: #333333;}
+.dh_li_til a{text-decoration: none;color: #333333;}
+.dh_li_til a:hover{text-decoration: none;color:#cc0099;}
+.icon_sy_1{background: url("/static/images/menu/sy.png")  no-repeat;}
+.icon_sy_2{background: url("/static/images/menu/sy2.png")  no-repeat;}
 
 
