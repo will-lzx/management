@@ -65,10 +65,10 @@ padding:0;
 .head_logo{float: left;width:160px;height: 40px;border: none;padding: 10px;}
 .head_til{float: left;font-size: 18px; font-weight: 400;text-align: left;width:300px;height: 30px;padding-top: 25px;}
 .logo_img{width:160px; height: auto; border: none;}
-.head_user{float: right;width: 200px;height: 30px;padding-top: 30px; padding-right:10px;font-size: 14px;text-align: right;color: #333333;}
+.head_user{float: right;width: 200px;height: 30px;padding-top: 30px; padding-right:10px;font-size: 14px;text-align: right;color: #666666;}
 .col{color: #cc0099;font-weight: bold;}
-.head_user a{text-decoration: none;}
-.head_user a{text-decoration: none;color: #cc0099;}
+.head_user a{text-decoration: none;color: #666666}
+.head_user a:hover{text-decoration: none;color: #cc0099;}
 
 
 
