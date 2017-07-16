@@ -80,14 +80,15 @@ body{  margin:0;  padding:0;height: 100%;width: 100%;}
 .nr_cont{width:auto;height:auto;position: absolute;top: 61px;left: 221px; right:0;bottom: 0;padding: 30px;}
 .sy_jr{width: 100%;height: auto;float: left;}
 .sy_jr_li{width: 20%;height: 200px;margin-right:5%;background-color: white;border: 1px solid #ececec;text-align: center;float: left; }
-.li_right{margin-right: 0; border-right: none;}
+.li_right{margin-right: 0; }
 .jr_li_img{width: 100%;text-align: center;margin: 20px auto;}
 .img_jr{width: 70px; height: auto;}
 .jr_li_sj{width: 100%;font-size: 36px;font-weight: 400;color: #cc0099;}
 .jr_li_sm{width: 100%;font-size: 12px;font-weight: 200;color: #666666;}
 
-.sy_zj{width: 100%;height: auto;float: left;border: 1px solid #ececec;}
+.sy_zj{width: 100%;height: auto;float: left;border: 1px solid #ececec;margin-top: 30px;}
 .sy_zj_til{width: 100%; height: 30px; float: left;font-size: 14px;font-weight: bold;color: #666666;line-height: 30px; border-bottom: 1px solid #efefef; }
-.zj_li{float: left;width: 15%;margin-right: 6%;text-align: center;border-right: 1px dotted #efefef;}
+.zj_li{float: left;width: 15%;margin-right: 6%;text-align: center;border-right: 1px dotted #efefef;margin-top: 20px; margin-bottom: 20px;}
+.zj_li_right{margin-right: 0; border-right: none;}
 .zj_li_sj{width: 100%;font-size: 18px;font-weight: 400;color: #333333;}
 .zj_li_sm{width: 100%;font-size: 12px;font-weight: 200;color: #666666;}
