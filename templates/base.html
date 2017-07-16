@@ -26,7 +26,7 @@
             <div class="head_til">（西湖景区管理后台）</div>
             <div class="head_user">
                 {% if user.is_authenticated %}
-                    <span>欢迎您:{{user.username}}</span>
+                    欢迎您:<span class="col">{{user.username}}</span>
                     <a href="/home/home_logout/">退出</a>
                 {% endif %}
             </div>
