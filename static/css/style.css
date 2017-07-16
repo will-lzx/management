@@ -72,8 +72,8 @@ padding:0;
 
 .dh_cont{float: left;height: 100%;width: 220px;border-right: 1px solid #CCCCCC;text-align: left;}
 .dh_li{width: 200px;height: 30px;padding: 10px;border: 1px dotted #ececec;}
-.dh_li_icon{float: left;width: 30px;height: 30px;border: none;}
-.dh_li_til{padding-left: 20px;float: left;font-size: 14px;font-weight: 300;color: #333333;}
+.dh_li_icon{float: left;width: 30px;height: 30px;border: none;background-color: #CCCCCC;}
+.dh_li_til{padding-left: 20px;float: left;font-size: 14px;font-weight: 300;color: #333333;line-height: 30px;}
 .dh_li_til a{text-decoration: none;color: #333333;}
 .dh_li_til a:hover{text-decoration: none;color:#cc0099;}
 .icon_sy{background: url("/static/images/menu/sy.png")  no-repeat;}
