@@ -72,7 +72,7 @@ padding:0;
 
 .dh_cont{float: left;height: 100%;width: 220px;border-right: 1px solid #CCCCCC;text-align: left;}
 .dh_li{width: 200px;height: 30px;padding: 10px;border: 1px dotted #ececec;}
-.icon_sy{float: left;width: 20px;height: 20px;border: none;margin-left: 20px;margin-top: 20px; background: url("/static/images/menu/sy.png")  no-repeat;}
+.icon_sy{float: left;width: 20px;height: 20px;border: none;margin-left: 20px;margin-top: 10px; background: url("/static/images/login_bg.jpg")  no-repeat;}
 .dh_li_til{padding-left: 20px;float: left;font-size: 14px;font-weight: 300;color: #333333;line-height: 30px;}
 .dh_li_til a{text-decoration: none;color: #333333;}
 .dh_li_til a:hover{text-decoration: none;color:#cc0099;}
