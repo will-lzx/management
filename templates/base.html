@@ -23,7 +23,8 @@
             <div class="head_logo">
                 <a href="/" target="_self" title="回首页"><img class="logo_img" src="/static/images/logo_re.jpg" border="0" onMouseOver="this.src='/static/images/logo_re2.jpg'" onMouseOut="this.src='/static/images/logo_re.jpg'" /></a>
             </div>
-            <div id="div-user">
+            <div class="head_til">西湖景区管理后台</div>
+            <div class="head_user">
                 {% if user.is_authenticated %}
                     <span>欢迎您:{{user.username}}</span>
                     <a href="/home/home_logout/">退出</a>
