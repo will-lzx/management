@@ -77,3 +77,5 @@ body{  margin:0;  padding:0;height: 100%;width: 100%;}
 .crunt_li{background-color: #cc0099;border: none; }
 .dh_lx{width: 180px;height: 30px; text-align:left;  font-size: 14px;  line-height: 50px;color: #333333;margin-top: 60px;padding-left: 30px;font-weight: 200;}
 
+.nr_cont{width: 100%;height: 100%;position: absolute;top: 60px;left: 240px;background-color: #CCCC66;}
+
