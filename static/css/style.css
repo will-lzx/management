@@ -70,13 +70,14 @@ padding:0;
 .head_user a{text-decoration: none;color: #333333}
 .head_user a:hover{text-decoration: none;color: #cc0099;}
 
-.dh_cont{float: left;height: 100%;background-color: #333333;width: 180px;padding: 10px;border-right: 1px solid #CCCCCC;text-align: left;}
-.dh ul.menu { float:left; height: 50px; text-align: left; }
+.dh_cont{float: left;height: 100%;background-color: #333333;width: 220px;border-right: 1px solid #CCCCCC;text-align: left;}
+.dh ul.menu { float:left; height: 50px; text-align: left;line-height: 50px; }
 .dh menu {list-style: none; }
-.dh .menu > li { display: block; float: left;width: 100%;text-align: left;font-size: 14px;font-weight: bold; }
-.dh .menu > li a{text-decoration: none; color: #333333;font-weight: normal;}
+.dh .menu > li { display: block; float: left;width: 180px; padding：20px;text-align: left;font-size: 14px;font-weight: bold;background-color: #cc0099; }
+.dh .menu > li a{text-decoration: none; color: #333333;font-weight: normal;background-color: white;}
 .dh .menu > li a:hover{text-decoration: none;font-weight: bold; }
 .crunt{background-color: #cc0099; color: white;}
+.dh_bg_sy{}
 
 
 
