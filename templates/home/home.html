@@ -9,8 +9,23 @@
         <div class="sy_jr">
             <div class="sy_jr_li">
                 <div class="jr_li_img"><img class="img_jr" src="{% static '/images/jr_yh.png' %}" alt="用户数"/></div>
-                <div class="jr_li_sj">89,803</div>
+                <div class="jr_li_sj">{{ new_customer_count }}</div>
                 <div class="jr_li_sm">今日新增用户数</div>
+            </div>
+            <div class="sy_jr_li">
+                <div class="jr_li_img"><img class="img_jr" src="{% static '/images/jr_zj.png' %}" alt="租借次数"/></div>
+                <div class="jr_li_sj">{{ lend_count_today }}</div>
+                <div class="jr_li_sm">今日租借次数</div>
+            </div>
+            <div class="sy_jr_li">
+                <div class="jr_li_img"><img class="img_jr" src="{% static '/images/jr_dd.png' %}" alt="租金收入"/></div>
+                <div class="jr_li_sj">{{ today_money }}</div>
+                <div class="jr_li_sm">今日租金收入（元）</div>
+            </div>
+            <div class="sy_jr_li">
+                <div class="jr_li_img"><img class="img_jr" src="{% static '/images/jr_yj.png' %}" alt="押金"/></div>
+                <div class="jr_li_sj">{{ today_deposit }}</div>
+                <div class="jr_li_sm">今日押金总额（元）</div>
             </div>
 
         </div>
