@@ -67,7 +67,7 @@ padding:0;
 .logo_img{width:160px; height: auto; border: none;}
 .head_user{float: right;width: 200px;height: 30px;padding-top: 30px; padding-right:10px;font-size: 14px;text-align: right;color: #666666;}
 .col{color: #cc0099;font-weight: bold;}
-.head_user a{text-decoration: none;color: #666666}
+.head_user a{text-decoration: none;color: #333333}
 .head_user a:hover{text-decoration: none;color: #cc0099;}
 
 
