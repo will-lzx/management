@@ -87,8 +87,8 @@ body{  margin:0;  padding:0;height: 100%;width: 100%;}
 .jr_li_sm{width: 100%;font-size: 12px;font-weight: 200;color: #666666;}
 
 .sy_zj{width: 96%;height: auto;float: left;border: 1px solid #ececec;margin-top: 30px;}
-.sy_zj_til{width: 100%; height: 50px; float: left;font-size: 14px;font-weight: bold;color: #666666;line-height: 50px; border-bottom: 1px solid #efefef;text-indent: 20px; }
+.sy_zj_til{width: 100%; height: 50px; float: left;font-size: 14px;font-weight: bold;color: #666666;line-height: 50px; text-indent: 20px; }
 .zj_li{float: left;width: 19%;text-align: center;border-right: 1px dotted #efefef;margin: 20px 0;}
 .bord_right{border-right: none;}
-.zj_li_sj{width: 100%;font-size: 18px;font-weight: 400;color: #333333;}
+.zj_li_sj{width: 100%;font-size: 24px;font-weight: 400;color: #333333;}
 .zj_li_sm{width: 100%;font-size: 12px;font-weight: 200;color: #666666;}
