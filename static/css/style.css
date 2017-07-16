@@ -47,11 +47,11 @@ padding:0;
 .first_input{padding-top: 50px;}
 .infos_left{width: 60px;height: 24px;border: 1px solid #990066; border-right: none; padding: 5px;font-size: 14px;float: left;background-color: white;line-height: 24px;}
 .infos_right{width: 210px;height: 24px;border: 1px solid #990066; border-left: none; padding: 5px;font-size: 14px;float: left;}
-.infos_yzm{width: 80px;height: 24px;border: 1px solid #990066;  padding: 5px;font-size: 14px;float: left;color: black;background-color:#ececec;text-align: left;line-height: 24px}
+.infos_yzm{width: 70px;height: 24px;border: 1px solid #990066;  padding: 5px;font-size: 14px;float: left;color: black;background-color:#ececec;text-align: left;line-height: 24px}
 .infos_yzm a{text-decoration: none; color:#0033CC;}
 .infos_yzm a:hover{text-decoration: none; color: #990066;}
-.infos_syz_left{width: 50px;height: 24px;border: 1px solid #990066; border-right: none; padding: 5px;font-size: 14px;float: left;background-color: white;line-height: 24px;}
-.infos_syz_right{width: 80px;height: 24px;border: 1px solid #990066; border-left: none; padding: 5px;font-size: 14px;float: left;}
+.infos_syz_left{width: 60px;height: 24px;border: 1px solid #990066; border-right: none; padding: 5px;font-size: 14px;float: left;background-color: white;line-height: 24px; margin-left: 10px;}
+.infos_syz_right{width: 117px;height: 24px;border: 1px solid #990066; border-left: none; padding: 5px;font-size: 14px;float: left;}
 .anniu {display: block;float: left;font-size: 14px; font-weight: 300; line-height: 26px;}
 .anniu a{ padding: 5px;display: block;width: 280px;height: 26px; text-decoration: none;background-color:#cc3399;color: white;}
 .anniu a:hover{display: block;text-decoration: none;background-color: #cc0099;font-weight: 500;}
