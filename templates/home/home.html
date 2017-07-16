@@ -28,32 +28,29 @@
                 <div class="jr_li_sm">今日押金总额（元）</div>
             </div>
         </div>
-
-            <table>
-                <tr>
-                    <td>
-                        <span>{{ total_customer_count }}</span><br>
-                        <span>总用户数</span>
-                    </td>
-                    <td>
-                        <span>{{ total_lend_count }}</span><br>
-                        <span>累计租借次数</span>
-                    </td>
-                    <td>
-                        <span>{{ total_deposit }}</span><br>
-                        <span>累计押金</span>
-                    </td>
-                    <td>
-                        <span>{{ spot_counts }}</span><br>
-                        <span>景点总数</span>
-                    </td>
-                    <td>
-                        <span>{{ pole_counts }}</span><br>
-                        <span>自拍杆总数</span>
-                    </td>
-                </tr>
-            </table>
-
+        <div class="sy_zj">
+            <div class="sy_zj_til"></div>
+            <div class="zj_li">
+                <div class="zj_li_sj">{{ total_customer_count }}</div>
+                <div class="zj_li_sm">总用户数</div>
+            </div>
+            <div class="zj_li">
+                <div class="zj_li_sj">{{ total_lend_count }}</div>
+                <div class="zj_li_sm">累计租借次数</div>
+            </div>
+            <div class="zj_li">
+                <div class="zj_li_sj">{{ total_deposit }}</div>
+                <div class="zj_li_sm">累计押金（元）</div>
+            </div>
+            <div class="zj_li">
+                <div class="zj_li_sj">{{ spot_counts }}</div>
+                <div class="zj_li_sm">景点总数</div>
+            </div>
+            <div class="zj_li li_right">
+                <div class="zj_li_sj">{{ pole_counts }}</div>
+                <div class="zj_li_sm">自拍杆总数</div>
+            </div>
+        </div>
     </div>
 
 {% endblock %}
