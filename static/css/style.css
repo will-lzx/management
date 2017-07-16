@@ -67,8 +67,8 @@ body{  margin:0;  padding:0;height: 100%;width: 100%;}
 .head_user a{text-decoration: none;color: #333333}
 .head_user a:hover{text-decoration: none;color: #cc0099;}
 
-.dh_cont{float: left;height: 100%;width: 220px;border-right: 1px solid #b4b4b4;text-align: left;position: absolute; top: 61px; bottom: 0; background-color: #efefef; }
-.dh_li{width: 200px;height: 30px;padding: 10px;border-bottom: 1px dashed #ececec;}
+.dh_cont{float: left;height: 100%;width: 220px;border-right: 1px solid #CCCCCC;text-align: left;position: absolute; top: 61px; bottom: 0; background-color: #efefef; }
+.dh_li{width: 200px;height: 30px;padding: 10px;border-bottom: 1px dashed #b4b4b4;}
 .dh_icon{float: left;width: 20px;height: 20px;border: none;margin-left: 20px;margin-top: 6px;}
 .icon_img{width: 18px;height: auto;}
 .dh_li_til{padding-left: 10px;float: left;font-size: 14px;font-weight:400;color: white;line-height: 30px;}
