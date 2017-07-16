@@ -55,7 +55,7 @@ padding:0;
 .anniu {display: block;float: left;font-size: 14px; font-weight: 300; line-height: 26px;}
 .anniu a{ padding: 5px;display: block;width: 280px;height: 26px; text-decoration: none;background-color:#cc3399;color: white;}
 .anniu a:hover{display: block;text-decoration: none;background-color: #cc0099;font-weight: 500;}
-.login_ts{width: 80%;height: 30px;text-align: center;color: red;font-size: 12px;margin: 0 auto;}
+#tip{width: 80%;height: 30px;text-align: center;color: red;font-size: 12px;margin: 0 auto;}
 
 .lx{width: 80%;height: 60px;margin: 0 auto;text-align: center;font-size: 12px;line-height: 20px;color: #333333;margin-top: 10px;}
 .col{color: #cc3399;font-weight: 400;}
