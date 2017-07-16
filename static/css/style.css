@@ -79,7 +79,7 @@ body{  margin:0;  padding:0;height: 100%;width: 100%;}
 
 .nr_cont{width:auto;height:auto;position: absolute;top: 61px;left: 221px; right:0;bottom: 0;padding: 30px;}
 .sy_jr{width: 100%;height: auto;float: left;}
-.sy_jr_li{width: 20%;height: 200px;margin-right:5%;background-color: white;border: 1px solid #ececec;text-align: center;float: left;background-color: #f6f6f6; }
+.sy_jr_li{width: 20%;height: 200px;margin-right:5%;background-color: white;text-align: center;float: left;background-color: #f6f6f6; }
 .li_right{margin-right: 0; }
 .jr_li_img{width: 100%;text-align: center;margin: 20px auto;}
 .img_jr{width: 70px; height: auto;}
