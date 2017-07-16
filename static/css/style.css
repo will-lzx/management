@@ -75,5 +75,5 @@ body{  margin:0;  padding:0;height: 100%;width: 100%;}
 .dh_li_til a{text-decoration: none;color: #333333;font-weight:300}
 .dh_li_til a:hover{text-decoration: none;color:#cc0099;font-weight:400;}
 .crunt_li{background-color: #cc0099;border: none; }
-.dh_lx{width: 180px;height: 50px; text-align:left;  font-size: 14px;  line-height: 50px;color: #333333;margin-top: 50px;padding-left: 30px;font-weight: 200;}
+.dh_lx{width: 180px;height: 30px; text-align:left;  font-size: 14px;  line-height: 50px;color: #333333;margin-top: 60px;padding-left: 30px;font-weight: 200;}
 
