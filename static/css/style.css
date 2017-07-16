@@ -76,8 +76,8 @@ padding:0;
 .dh .menu > li { display: block; float: left;width: 180px; padding：20px;text-align: left;font-size: 14px;font-weight: bold;background-color: #cc0099; }
 .dh .menu > li a{text-decoration: none; color: #333333;font-weight: normal;background-color: white;}
 .dh .menu > li a:hover{text-decoration: none;font-weight: bold; }
-.crunt{background-color: #cc0099; color: white;}
-.dh_bg_sy{}
+.dh_img_sy{width: 30px;height: auto; background: url("/static/images/menu/sy.png")  no-repeat;}
+.dh_img_sy a{width: 30px;height: auto; background: url("/static/images/menu/sy2.png")  no-repeat;}
 
 
 
