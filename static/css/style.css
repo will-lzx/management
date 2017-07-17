@@ -165,11 +165,11 @@ table.gridtable td {
     border-color: #999999;
     background-color: #ffffff;
 }
-table.a {
+table.gridtable a {
     color: #0033CC;
     text-decoration: none;
 }
-table.a:hover {
+table.gridtable a:hover {
     color: #cc0099;
     text-decoration: none;
 }
