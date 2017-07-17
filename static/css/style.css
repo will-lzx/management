@@ -202,3 +202,5 @@ table.bgxq td {
     border-color: #999999;
     background-color: #ffffff;
 }
+.jd_tj a{width: 20%;margin: 20px;font-size: 14px;text-decoration: none;color: #cc0099;line-height: 20px;}
+.jd_tj a:hover{text-decoration: none;font-weight: bold;}
