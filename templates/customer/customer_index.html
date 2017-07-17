@@ -41,7 +41,7 @@
                         <td>{{ customer.deposit }}</td>
                         <td>{{ customer.create_time | datetime_format }}</td>
                         <td>{{ customer.weixin_number| get_lendcount }}</td>
-                        <td><a href="/customer/lendhistory/{{ customer.mobile_number }}" >租借详情</a></td>
+                        <td><a href="/customer/lendhistory/{{ customer.mobile_number }}"  target="_blank">租借详情</a></td>
                     </tr>
                 {% endfor %}
             {% else %}
