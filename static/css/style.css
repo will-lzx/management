@@ -95,8 +95,8 @@ body{  margin:0;  padding:0;height: 100%;width: 100%;}
 
 .sear{width: 100%;float: left;height:auto;background-color: white;text-align: left;}
 .sear_input{width: 120px;height: 20px;border: 1px solid #999999;  padding: 4px;font-size: 14px;float: left;margin:10px 0 10px 10px;border-radius:4px;}
-.ser_sec{width: 120px; height: 30px; overflow: hidden; margin: 10px;}
-.sear_sec select{width: 120px;height: 30px;background-color: white;font-size: 14px;}
+.ser_sec{width: 120px; height: 30px; overflow: hidden; }
+.sear_sec select{width: 120px;height: 30px;background-color: white;font-size: 14px;margin: 10px;}
 .jiansuo {width: 60px;border: 1px solid #999999;background-color: #cc0099;}
 
 .button {float: left;
