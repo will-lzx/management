@@ -86,17 +86,49 @@
         }});
 
         $(document).ready(function() {
+
             select_menu('{{ menu_selected }}');
         });
 
-        function select_menu(link)
+        function select_menu(menu)
         {
+            var png_path = '';
+            if(menu == 'home')
+            {
+                png_path = '/static/images/menu/sy2.png';
+            }
+            else if(menu == 'user_management')
+            {
+                png_path = '/static/images/menu/yh2.png';
+            }
+            else if(menu == 'cabinet_management')
+            {
+                png_path = '/static/images/menu/yj2.png';
+            }
+            else if(menu == 'spot_management')
+            {
+                png_path = '/static/images/menu/jd2.png';
+            }
+            else if(menu == 'lend_management')
+            {
+                png_path = '/static/images/menu/dd2.png';
+            }
+            else if(menu == 'cash_management')
+            {
+                png_path = '/static/images/menu/dz2.png';
+            }
+            else if(menu == 'data_analysis')
+            {
+                png_path = '/static/images/menu/sj2.png';
+            }
+
             $('a').each(function () {
 
-                if($(this).attr('name') == link)
+                if($(this).attr('name') == menu)
                 {
-                    $(this).parent().attr('class','dh_li crunt_li');
-                    $(this).parent().children().filter('img').attr("src", "{% static '/images/menu/sy2.png' %}");
+                    $(this).parent().parent().attr('class','dh_li crunt_li');
+
+                    $(this).parent().parent().find('img').attr("src", png_path);
                 }
             });
 
