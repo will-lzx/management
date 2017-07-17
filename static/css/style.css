@@ -96,7 +96,7 @@ body{  margin:0;  padding:0;height: 100%;width: 100%;}
 .sear{width: 100%;float: left;height:auto;background-color: white;text-align: left;padding: 10px;}
 .sear_input{width: 120px;height: 20px;border: 1px solid #999999;  padding: 4px;font-size: 14px;float: left;margin-right: 10px;border-radius:4px;}
 .ser_sec{width: 120px; height: 30px; overflow: hidden;}
-.sear_sec select{width: 120px;height: 30px;background-color: white;}
+.sear_sec select{width: 120px;height: 30px;background-color: white;font-size: 14px;}
 .jiansuo {width: 60px;border: 1px solid #999999;background-color: #cc0099;}
 
 .button {
@@ -111,7 +111,6 @@ body{  margin:0;  padding:0;height: 100%;width: 100%;}
   width: 80px;
   transition: all 0.5s;
   cursor: pointer;
-  margin: 5px;
 }
 
 .button span {
@@ -126,12 +125,12 @@ body{  margin:0;  padding:0;height: 100%;width: 100%;}
   position: absolute;
   opacity: 0;
   top: 0;
-  right: -20px;
+  right: -5px;
   transition: 0.5s;
 }
 
 .button:hover span {
-  padding-right: 25px;
+  padding-right: 5px;
 }
 
 .button:hover span:after {
