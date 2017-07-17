@@ -26,7 +26,6 @@ urlpatterns = [
     url(r'^home/', include('home.urls')),
     url(r'^hardware/', include('hardware.urls')),
     url(r'^customer/', include('customer.urls')),
-    url(r'^order/', include('order.urls')),
     url(r'^analysis/', include('analysis.urls')),
     # url(r'^accounts/login/$', home_login, name='home_login'),
     url(r'^login/agreement/$', agreement, name='agreement'),
