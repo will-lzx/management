@@ -5,5 +5,8 @@ from django.shortcuts import render
 
 def analysis(request):
     template_name = 'analysis/analysis_index.html'
-    response = render(request, template_name)
+    context = {
+        'menu_selected': 'data_analysis'
+    }
+    response = render(request, template_name, context)
     return response

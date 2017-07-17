@@ -14,7 +14,11 @@ def hardware(request):
 def cabinet(request):
     cabinets = Cabinet.objects.all().order_by('number')
     spots = Spot.objects.all()
-    context = {'cabinets': cabinets, 'spots': spots}
+    context = {
+        'menu_selected': 'cabinet_management',
+        'cabinets': cabinets,
+        'spots': spots
+    }
     template_name = 'hardware/cabinet/cabinet.html'
     response = render(request, template_name, context)
     return response
@@ -161,7 +165,11 @@ def spot(request):
     template_name = 'hardware/spot/spot.html'
     spots = Spot.objects.all().order_by('province', 'city')
     rules = Rule.objects.all().order_by('-modify_time')
-    context = {'spots': spots, 'rules': rules}
+    context = {
+        'menu_selected': 'spot_management',
+        'spots': spots,
+        'rules': rules
+    }
     response = render(request, template_name, context)
     return response
 

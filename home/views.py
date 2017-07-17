@@ -41,16 +41,18 @@ def home(request):
     spot_counts = len(Spot.objects.all())
 
     pole_counts = len(Pole.objects.all())
-    context ={'new_customer_count': str(new_customer_count),
-              'lend_count_today': str(lend_count_today),
-              'today_money': today_money,
-              'today_deposit': today_deposit,
-              'total_customer_count': total_customer_count,
-              'total_lend_count': total_lend_count,
-              'total_deposit': total_deposit,
-              'spot_counts': spot_counts,
-              'pole_counts': pole_counts
-              }
+    context ={
+            'menu_selected': 'home',
+            'new_customer_count': str(new_customer_count),
+            'lend_count_today': str(lend_count_today),
+            'today_money': today_money,
+            'today_deposit': today_deposit,
+            'total_customer_count': total_customer_count,
+            'total_lend_count': total_lend_count,
+            'total_deposit': total_deposit,
+            'spot_counts': spot_counts,
+            'pole_counts': pole_counts
+        }
     response = render(request, template_name, context)
     return response
 

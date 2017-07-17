@@ -11,7 +11,10 @@ def customer(request):
 
     customers = Customer.objects.all()
 
-    context = {'customers': customers}
+    context = {
+        'menu_selected': 'user_management',
+        'customers': customers
+    }
 
     response = render(request, template_name, context)
     return response
@@ -91,7 +94,10 @@ def lendmanagement(request):
     lendhistories = LendHistory.objects.all().order_by('-start_time')
     template_name = 'customer/lendmanagement.html'
 
-    context = {'lendhistories': lendhistories}
+    context = {
+        'menu_selected': 'lend_management',
+        'lendhistories': lendhistories
+    }
 
     response = render(request, template_name, context)
     return response

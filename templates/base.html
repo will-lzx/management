@@ -37,7 +37,7 @@
                  <div class="dh_icon">
                      <img class="icon_img" src="{% static '/images/menu/sy.png' %}" alt="首页" />
                  </div>
-                 <div class="dh_li_til"><a href='#' onclick="select_menu(this)">首页</a></div>
+                 <div class="dh_li_til"><a href='/' name="home">首页</a></div>
             </div>
 {#            <div class="dh_li crunt_li">#}
 {#                 <div class="dh_icon">#}
@@ -47,27 +47,27 @@
 {#            </div>#}
             <div class="dh_li">
                  <div class="dh_icon"><img class="icon_img" src="{% static '/images/menu/yh.png' %}" alt="用户管理"/></div>
-                 <div class="dh_li_til"><a href='/customer/'>用户管理</a></div>
+                 <div class="dh_li_til"><a href='/customer/' name="user_management">用户管理</a></div>
             </div>
             <div class="dh_li">
                  <div class="dh_icon"><img class="icon_img" src="{% static '/images/menu/yj.png' %}" alt="设备管理"/></div>
-                 <div class="dh_li_til"><a href='/hardware/cabinet/'>设备管理</a></div>
+                 <div class="dh_li_til"><a href='/hardware/cabinet/' name="cabinet_management">设备管理</a></div>
             </div>
             <div class="dh_li">
                  <div class="dh_icon"><img class="icon_img" src="{% static '/images/menu/jd.png' %}" alt="景点管理"/></div>
-                 <div class="dh_li_til"><a href='/hardware/spot/'>景点管理</a></div>
+                 <div class="dh_li_til"><a href='/hardware/spot/' name="spot_management">景点管理</a></div>
             </div>
             <div class="dh_li">
                  <div class="dh_icon"><img class="icon_img" src="{% static '/images/menu/dd.png' %}" alt="租借管理"/></div>
-                 <div class="dh_li_til"><a href='/customer/lendmanagement/'>租借管理</a></div>
+                 <div class="dh_li_til"><a href='/customer/lendmanagement/' name="lend_management">租借管理</a></div>
             </div>
             <div class="dh_li">
                  <div class="dh_icon"><img class="icon_img" src="{% static '/images/menu/dz.png' %}" alt="对账管理"/></div>
-                 <div class="dh_li_til"><a href='/'>对账管理</a></div>
+                 <div class="dh_li_til"><a href='/' name="cash_management">对账管理</a></div>
             </div>
             <div class="dh_li">
                  <div class="dh_icon"><img class="icon_img" src="{% static '/images/menu/sj.png' %}" alt="数据统计"/></div>
-                 <div class="dh_li_til"><a href='/analysis/'>数据统计</a></div>
+                 <div class="dh_li_til"><a href='/analysis/' name="data_analysis">数据统计</a></div>
             </div>
             <div class="dh_lx">问题咨询：13089008900</div>
         </div>
@@ -86,13 +86,27 @@
         }});
 
         $(document).ready(function() {
-
+            select_menu('{{ menu_selected }}');
         });
-        
-        function select_menu(link) {
-            link.parentElement.setAttribute('class','dh_li crunt_li');
-            link.parentElement.children('img').setAttribute("src", "{% static '/images/menu/sy2.png' %}");
+
+        function select_menu(link)
+        {
+            $('a').each(function () {
+
+                if($(this).attr('name') == link)
+                {
+                    $(this).parent().attr('class','dh_li crunt_li');
+                    $(this).parent().children().filter('img').attr("src", "{% static '/images/menu/sy2.png' %}");
+                }
+            });
+
         }
+        
+
+
+
+
+
      </script>
 
 </body>
