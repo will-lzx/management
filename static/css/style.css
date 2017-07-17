@@ -210,24 +210,16 @@ table.jdtj {
     color:#333333;
     border-top: 1px #efefef solid;
     border-collapse: collapse;
-    width: 40%;
+    width: 30%;
     margin-left: 20px;
     margin-bottom: 20px;
 }
 table.jdtj th {
-    border-width: 1px;
     padding: 5px;
-    border-style: solid;
-    border-color: #efefef;
-    background-color: #efefef;
     font-weight:bold;
     color: #666666;
 }
 table.jdtj td {
-    border-width: 1px;
-    height: 30px;
     padding: 5px;
-    border-style: solid;
-    border-color: #efefef;
     background-color: #ffffff;
 }
