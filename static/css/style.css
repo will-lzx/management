@@ -100,6 +100,7 @@ body{  margin:0;  padding:0;height: 100%;width: 100%;}
 .jiansuo {width: 60px;border: 1px solid #999999;background-color: #cc0099;}
 
 .button {
+    float: left;
   display: inline-block;
   border-radius: 4px;
   background-color: #cc0099;
