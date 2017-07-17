@@ -18,9 +18,9 @@
        <div class="bg_xq">
             <div class="bg_xq_til">{% block title %}
                    租借详情{% endblock %}</div>
-
- <table class="bgxq">
+            <table class="bgxq">
             <tr>
+                <th>订单号</th>
                 <th>开始时间</th>
                 <th>归还时间</th>
                 <th>租金</th>
@@ -32,6 +32,7 @@
                 {% if lendhistories %}
                     {% for lendhistory in lendhistories %}
                         <td>{{ lendhistory.start_time }}</td>
+                        <td>{{ lendhistory.start_time }}</td>
                         <td>{{ lendhistory.return_time }}</td>
                         <td>{{ lendhistory.money }}</td>
                         <td>{{ lendhistory.status }}</td>
@@ -39,7 +40,7 @@
                         <td>{{ lendhistory.rule_id }}</td>
                     {% endfor %}
                 {% else %}
-                    <td colspan="6">No lend history still</td>
+                    <td colspan="6">暂无租借记录</td>
                 {% endif %}
             </tr>
         </table>
