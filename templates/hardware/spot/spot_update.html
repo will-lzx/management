@@ -7,19 +7,20 @@
 {% endblock %}
 
 {% block content %}
-    <div>
-        <a href="/hardware/spot/" name="return">返回</a>
-    </div>
-    <div class="div-update">
-        <table  class="div-table">
+     <div class="nr_cont">
+     <div class="jd_tj" >
+        <a href="/hardware/spot/" name="return"> <返回</a>
+     </div>
+     <div class="div-update">
+        <table class="jdtj">
             <tr>
-                <td>景点名称</td>
+                <th>景点名称</th>
                 <td>
                     <input name="spot_name" required value="{{ spot.name }}" onblur="mblur('请输入景点名称')" onclick="mclick('请输入景点名称')">
                 </td>
             </tr>
             <tr>
-                <td>省</td>
+                <th>省</th>
                 <td>
                     <select id="province" name="" size="" >
 
@@ -27,7 +28,7 @@
                 </td>
             </tr>
             <tr>
-                <td>市</td>
+                <th>市</th>
                 <td>
                     <select id="city" name="" size="">
 
@@ -35,17 +36,17 @@
                 </td>
             </tr>
             <tr>
-                <td>详细地址</td>
+                <th>详细地址</th>
                 <td>
                     <input name="address" required value="{{ spot.address }}" onblur="mblur('请输入详细地址')" onclick="mclick('请输入详细地址')">
                 </td>
             </tr>
             <tr>
-                <td>负责人</td>
+                <th>负责人</th>
                 <td><input name="responsible_person" required value="{{ spot.responsible_person }}" onblur="mblur('请输入负责人')" onclick="mclick('请输入负责人')"></td>
             </tr>
             <tr>
-                <td>计费规则</td>
+                <th>计费规则</th>
                 <td>
                     <select id="rule">
                         <option value="0">请选择计费规则</option>
@@ -58,11 +59,12 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2"><input type="submit" value="提交" onclick="submit({{ spot.id }})"></td>
+                <th></th>
+                <td ><input type="submit" value="提交" onclick="submit({{ spot.id }})"> &nbsp; <input type="submit" value="取消" onclick="window.history.back(-1)"></td>
             </tr>
         </table>
     </div>
-
+     </div>
     <script src="/static/js/jquery-3.2.1.js"></script>
     <script src="/static/js/province_city.js"></script>
 
