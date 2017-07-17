@@ -20,4 +20,5 @@ from analysis.views import *
 
 urlpatterns = [
     url(r'^$', login_required(analysis, login_url='/home/home_login/'), name='analysis'),
+    url(r'^money_analysis/$', login_required(money_analysis, login_url='/home/home_login/'), name='money_analysis$'),
 ]
