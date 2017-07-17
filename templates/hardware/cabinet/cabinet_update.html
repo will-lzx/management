@@ -14,19 +14,19 @@
     <div class="div-update">
         <table class="jdtj">
             <tr >
-                <td>编号</td>
+                <th>编号</th>
                 <td>
                     <input name="number" required value="{{ cabinet.number }}" onblur="mblur('请输入机柜编号')" onclick="mclick('请输入机柜编号')">
                 </td>
             </tr>
             <tr>
-                <td>二维码</td>
+                <th>二维码</th>
                 <td>
                     <input name="two_dimension" required value="{{ cabinet.two_dimension_code }}" onblur="mblur('请输入机柜二维码')" onclick="mclick('请输入机柜二维码')">
                 </td>
             </tr>
             <tr>
-                <td>所属景区</td>
+                <th>所属景区</th>
                 <td>
                     <select id="spot">
                         <option value="0">请选择所属景区</option>
@@ -39,32 +39,32 @@
                 </td>
             </tr>
             <tr>
-                <td>容量</td>
+                <th>容量</th>
                 <td>
                     <input name="capacity" required value="{{ cabinet.capacity }}" onblur="mblur('请输入机柜容量')" onclick="mclick('请输入机柜容量')">
                 </td>
             </tr>
             <tr>
-                <td>状态</td>
+                <th>状态</th>
                 <td>
                     <input name="status" required value="{{ cabinet.status }}" onblur="mblur('请输入机柜状态')" onclick="mclick('请输入机柜状态')">
                 </td>
             </tr>
             <tr>
-                <td>经度</td>
+                <th>经度</th>
                 <td>
                     <input name="lat" required value="{{ cabinet.lat }}" onblur="mblur('请输入机柜经度')" onclick="mclick('请输入机柜经度')">
                 </td>
             </tr>
             <tr>
-                <td>纬度</td>
+                <th>纬度</th>
                 <td>
                     <input name="lon" required value="{{ cabinet.lon }}" onblur="mblur('请输入机柜纬度')" onclick="mclick('请输入机柜纬度')">
                 </td>
             </tr>
 
             <tr>
-                <td></td>
+                <th></th>
                 <td colspan="2"><input type="submit" value="提交" onclick="submit({{ cabinet.id }})"> &nbsp; <input type="submit" value="取消" onclick="window.history.back(-1)"></td>
             </tr>
         </table>
