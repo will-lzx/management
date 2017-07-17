@@ -93,13 +93,13 @@ body{  margin:0;  padding:0;height: 100%;width: 100%;}
 .zj_li_sj{width: 100%;font-size: 24px;font-weight: 400;color: #333333;}
 .zj_li_sm{width: 100%;font-size: 12px;font-weight: 200;color: #666666;}
 
-.sear{width: 98%;float: left;height:auto;background-color: white;text-align: left;padding: 15px;}
+.sear{width: 100%;float: left;height:auto;background-color: white;text-align: left;}
 .sear_input{width: 120px;height: 20px;border: 1px solid #999999;  padding: 4px;font-size: 14px;float: left;margin-right: 10px;border-radius:4px;}
 .ser_sec{width: 120px; height: 30px; overflow: hidden;}
 .sear_sec select{width: 120px;height: 30px;background-color: white;font-size: 14px;}
 .jiansuo {width: 60px;border: 1px solid #999999;background-color: #cc0099;}
 
-.button {  float: left;
+.button {float: left;
   display: inline-block;
   border-radius: 4px;
   background-color: #cc0099;
@@ -139,7 +139,7 @@ body{  margin:0;  padding:0;height: 100%;width: 100%;}
 }
 .yh_an{margin-left: 560px;margin-top: -30px;}
 
-.bg_til{width: 98%;float: left;margin-top: 20px;padding: 5px;font-size: 14px;color: #666666;}
+.bg_til{width: 100%;float: left;margin-top: 20px;padding: 5px;font-size: 14px;color: #666666;}
 table.gridtable {
     font-family: verdana,arial,sans-serif;
     font-size:11px;
