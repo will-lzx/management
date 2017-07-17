@@ -208,7 +208,7 @@ table.jdtj {
     font-family: verdana,arial,sans-serif;
     font-size:12px;
     color:#333333;
-    border-top: 1px #999999 solid;
+    border-top: 1px #efefef solid;
     border-collapse: collapse;
     width: 40%;
     margin-left: 20px;
@@ -217,7 +217,7 @@ table.jdtj th {
     border-width: 1px;
     padding: 8px;
     border-style: solid;
-    border-color: #999999;
+    border-color: #efefef;
     background-color: #efefef;
     font-weight:bold;
     color: #666666;
@@ -227,6 +227,6 @@ table.jdtj td {
     height: 30px;
     padding: 8px;
     border-style: solid;
-    border-color: #999999;
+    border-color: #efefef;
     background-color: #ffffff;
 }
