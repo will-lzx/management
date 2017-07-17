@@ -34,13 +34,17 @@
 
         <div class="dh_cont">
             <div class="dh_li">
-                 <div class="dh_icon"><img class="icon_img" src="{% static '/images/menu/sy.png' %}" alt="首页"/></div>
-                 <div class="dh_li_til"><a href='/'>首页</a></div>
+                 <div class="dh_icon">
+                     <img class="icon_img" src="{% static '/images/menu/sy.png' %}" alt="首页" />
+                 </div>
+                 <div class="dh_li_til"><a href='/' onclick="select_menu(this)">首页</a></div>
             </div>
-            <div class="dh_li crunt_li">
-                 <div class="dh_icon"><img class="icon_img" src="{% static '/images/menu/sy2.png' %}" alt="首页"/></div>
-                 <div class="dh_li_til">首页</div>
-            </div>
+{#            <div class="dh_li crunt_li">#}
+{#                 <div class="dh_icon">#}
+{#                     <img class="icon_img" src="{% static '/images/menu/sy2.png' %}" alt="首页"/>#}
+{#                 </div>#}
+{#                 <div class="dh_li_til">首页</div>#}
+{#            </div>#}
             <div class="dh_li">
                  <div class="dh_icon"><img class="icon_img" src="{% static '/images/menu/yh.png' %}" alt="用户管理"/></div>
                  <div class="dh_li_til"><a href='/customer/'>用户管理</a></div>
@@ -84,6 +88,11 @@
         $(document).ready(function() {
 
         });
+        
+        function select_menu(link) {
+            link.parentElement.setAttribute('class','dh_li crunt_li');
+            link.parentElement.children('img').setAttribute("src", "{% static '/images/menu/sy2.png' %}");
+        }
      </script>
 
 </body>
