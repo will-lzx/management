@@ -212,10 +212,11 @@ table.jdtj {
     border-collapse: collapse;
     width: 40%;
     margin-left: 20px;
+    margin-bottom: 20px;
 }
 table.jdtj th {
     border-width: 1px;
-    padding: 8px;
+    padding: 5px;
     border-style: solid;
     border-color: #efefef;
     background-color: #efefef;
@@ -225,7 +226,7 @@ table.jdtj th {
 table.jdtj td {
     border-width: 1px;
     height: 30px;
-    padding: 8px;
+    padding: 5px;
     border-style: solid;
     border-color: #efefef;
     background-color: #ffffff;
