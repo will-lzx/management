@@ -174,5 +174,30 @@ table.gridtable a:hover {
     color: #cc0099;
     text-decoration: none;
 }
-.tc_bg{ display: none;  position: absolute;  top: 0%;  left: 0%;  width: 100%;  height: 100%;  background-color: black;  z-index:1001;  -moz-opacity: 0.8;  opacity:.80;  filter: alpha(opacity=80);  }
-.white_content {  display: none;  position: absolute;  top: 25%;  left: 25%;  width: 50%;  height: 50%;  padding: 16px;  border: 16px solid orange;  background-color: white;  z-index:1002;  overflow: auto;}
+.bg_xq{width: 60%;margin: 20px auto;}
+table.bgxq {
+    font-family: verdana,arial,sans-serif;
+    font-size:12px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #999999;
+    border-collapse: collapse;
+    width: 100%;
+}
+table.bgxq th {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #FFFFFF;
+    font-weight:bold;
+    color: #666666;
+}
+table.bgxq td {
+    border-width: 1px;
+    height: 30px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #999999;
+    background-color: #ffffff;
+}
