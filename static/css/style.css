@@ -211,15 +211,15 @@ table.jdtj {
     border-top: 1px #efefef solid;
     border-collapse: collapse;
     width: 100%;
-    margin-left: 20px;
     margin-bottom: 20px;
 }
 table.jdtj th {
-    padding: 5px;
+    padding: 10px;
     font-weight:bold;
     color: #666666;
+    text-align: right;
 }
 table.jdtj td {
-    padding: 5px;
+    padding: 10px;
     background-color: #ffffff;
 }
