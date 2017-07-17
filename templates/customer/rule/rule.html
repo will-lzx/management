@@ -7,54 +7,46 @@
 {% endblock %}
 
 {% block content %}
-    <div>
-        <a href="#" onclick="rule_add()">添加</a>
-    </div>
-    <div class="div-add">
-        <table  class="div-table">
+    <div class="nr_cont">
+    <div class="sear">
+        <div class="jd_tj" ><a href="#" oonclick="rule_add()">+添加计费规则</a></div>
+        <div class="div-add">
+        <table  class="jdtj">
             <tr>
-                <td>开始时间长度</td>
+                <th>开始时间长度</th>
                 <td>
                     <input name="time_long" required value="请输入开始时间长度" onblur="mblur('请输入开始时间长度')" onclick="mclick('请输入开始时间长度')">小时
                 </td>
             </tr>
             <tr>
-                <td>单价</td><td><input name="unit_price" required value='请输入单价' onblur="mblur('请输入单价')" onclick="mclick('请输入单价')">元</td>
+                <th>单价</th><td><input name="unit_price" required value='请输入单价' onblur="mblur('请输入单价')" onclick="mclick('请输入单价')">元</td>
             </tr>
             <tr>
-                <td>是否生效</td>
+                <th>是否生效</th>
                 <td>
                     <input type="radio" value="是" name="is_valid" checked>是
                     <input type="radio" value="否" name="is_valid">否
                 </td>
             </tr>
             <tr>
-                <td>操作人</td><td><input name="operator" required value="请输入操作人" onblur="mblur('请输入操作人')" onclick="mclick('请输入操作人')"></td>
+                <th>操作人</th><td><input name="operator" required value="请输入操作人" onblur="mblur('请输入操作人')" onclick="mclick('请输入操作人')"></td>
             </tr>
             <tr>
-                <td colspan="2"><input type="submit" value="提交" onclick="submit()"></td>
+                <th></th><td ><input type="submit" value="提交" onclick="submit()">&nbsp; <input type="submit" value="取消" onclick="cancel_add()"></td>
             </tr>
         </table>
-        <div>
-            <a href="#" onclick="cancel_add()">取消</a>
-        </div>
     </div>
-    <div class="div-content">
-        <table class="div-table">
+    <div class="bg_til">共有 <span class="col">7909</span> 条符合条件</div>
+        <table class="gridtable">
             <tr>
-                <td rowspan="2">开始时间长度</td>
-                <td rowspan="2">单价</td>
-                <td rowspan="2">是否生效</td>
-                <td rowspan="2">创建时间</td>
-                <td rowspan="2">修改时间</td>
-                <td rowspan="2">操作人</td>
-                <td colspan="2">操作</td>
+                <th>开始时间长度</th>
+                <th>单价</td>
+                <th>是否生效</td>
+                <th>创建时间</td>
+                <th>修改时间</td>
+                <th>操作人</td>
+                <th>操作</td>
             </tr>
-            <tr>
-                <td>更新</td>
-                <td>删除</td>
-            </tr>
-
                 {% if rules %}
                     {% for rule in rules %}
                         <tr>
@@ -70,8 +62,7 @@
                             <td>{{ rule.create_time | datetime_format }}</td>
                             <td>{{ rule.modify_time | datetime_format }}</td>
                             <td>{{ rule.operator }}</td>
-                            <td><a href="/customer/rule/rule_update/{{ rule.id }}">更新</a></td>
-                            <td><a href="#" onclick="delete_rule({{ rule.id }})">删除</a></td>
+                            <td><a href="/customer/rule/rule_update/{{ rule.id }}">更新</a> &nbsp;<a href="#" onclick="delete_rule({{ rule.id }})">删除</a></td>
                             <td></td>
                         </tr>
                     {% endfor %}
@@ -83,6 +74,7 @@
                 {% endif %}
 
         </table>
+    </div>
     </div>
     <script src="/static/js/jquery-3.2.1.js"></script>
 
