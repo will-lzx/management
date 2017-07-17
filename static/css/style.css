@@ -147,7 +147,7 @@ table.gridtable {
     border-width: 1px;
     border-color: #999999;
     border-collapse: collapse;
-    width: 99%;
+    width: 100%;
 }
 table.gridtable th {
     border-width: 1px;
