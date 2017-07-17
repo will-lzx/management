@@ -154,13 +154,13 @@ table.gridtable th {
     padding: 8px;
     border-style: solid;
     border-color: #666666;
-    background-color: #efefef;
+    background-color: #FFFFFF;
     font-weight:bold;
     color: #666666;
 }
 table.gridtable td {
     border-width: 1px;
-    height: 40px;
+    height: 30px;
     padding: 8px;
     border-style: solid;
     border-color: #999999;
