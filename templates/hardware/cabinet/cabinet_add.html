@@ -11,17 +11,18 @@
     <div>
         <a href="/hardware/cabinet/" name="return">返回</a>
     </div>
-        <table class="div-table">
+        <div class="div-add">
+        <table>
             <tr>
                 <td>编号</td>
                 <td>
-                    <input name="number" required value="{{ cabinet.number }}" onblur="mblur('请输入机柜编号')" onclick="mclick('请输入机柜编号')">
+                    <input name="number" required value="请输入机柜编号" onblur="mblur('请输入机柜编号')" onclick="mclick('请输入机柜编号')">
                 </td>
             </tr>
             <tr>
                 <td>二维码</td>
                 <td>
-                    <input name="two_dimension" required value="{{ cabinet.two_dimension_code }}" onblur="mblur('请输入机柜二维码')" onclick="mclick('请输入机柜二维码')">
+                    <input name="two_dimension" required value="请输入机柜二维码" onblur="mblur('请输入机柜二维码')" onclick="mclick('请输入机柜二维码')">
                 </td>
             </tr>
             <tr>
@@ -31,7 +32,7 @@
                         <option value="0">请选择所属景区</option>
                         {% if spots %}
                             {% for spot in spots %}
-                                <option value="{{ spot.id }}" {% ifequal cabinet.spot_id spot.id %}selected{% endifequal %}>{{ spot.name }}</option>
+                                <option value="{{ spot.id }}">{{ spot.name }}</option>
                             {% endfor %}
                         {% endif %}
                     </select>
@@ -40,32 +41,36 @@
             <tr>
                 <td>容量</td>
                 <td>
-                    <input name="capacity" required value="{{ cabinet.capacity }}" onblur="mblur('请输入机柜容量')" onclick="mclick('请输入机柜容量')">
+                    <input name="capacity" required value="请输入机柜容量" onblur="mblur('请输入机柜容量')" onclick="mclick('请输入机柜容量')">
                 </td>
             </tr>
             <tr>
                 <td>状态</td>
                 <td>
-                    <input name="status" required value="{{ cabinet.status }}" onblur="mblur('请输入机柜状态')" onclick="mclick('请输入机柜状态')">
+                    <input name="status" required value="请输入机柜状态" onblur="mblur('请输入机柜状态')" onclick="mclick('请输入机柜状态')">
                 </td>
             </tr>
             <tr>
                 <td>经度</td>
                 <td>
-                    <input name="lat" required value="{{ cabinet.lat }}" onblur="mblur('请输入机柜经度')" onclick="mclick('请输入机柜经度')">
+                    <input name="lat" required value="请输入机柜经度" onblur="mblur('请输入机柜经度')" onclick="mclick('请输入机柜经度')">
                 </td>
             </tr>
             <tr>
                 <td>纬度</td>
                 <td>
-                    <input name="lon" required value="{{ cabinet.lon }}" onblur="mblur('请输入机柜纬度')" onclick="mclick('请输入机柜纬度')">
+                    <input name="lon" required value="请输入机柜纬度" onblur="mblur('请输入机柜纬度')" onclick="mclick('请输入机柜纬度')">
                 </td>
             </tr>
 
             <tr>
-                <td colspan="2"><input type="submit" value="提交" onclick="submit({{ cabinet.id }})"></td>
+                <td colspan="2"><input type="submit" value="提交" onclick="submit()"></td>
             </tr>
         </table>
+        <div>
+            <a href="#" onclick="cancel_add()">取消</a>
+        </div>
+    </div>
 
     </div>
     <script src="/static/js/jquery-3.2.1.js"></script>
