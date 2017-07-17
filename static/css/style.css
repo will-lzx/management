@@ -147,7 +147,7 @@ table.gridtable {
     border-width: 1px;
     border-color: #999999;
     border-collapse: collapse;
-    width: 98%;
+    width: 99%;
 }
 table.gridtable th {
     border-width: 1px;
@@ -164,4 +164,12 @@ table.gridtable td {
     border-style: solid;
     border-color: #999999;
     background-color: #ffffff;
+}
+table.a {
+    color: #0033CC;
+    text-decoration: none;
+}
+table.a:hover {
+    color: #cc0099;
+    text-decoration: none;
 }
