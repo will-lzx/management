@@ -98,7 +98,7 @@
                             <td>{{ cabinet.status }}</td>
                             <td>{{ cabinet.lat }}</td>
                             <td>{{ cabinet.lon }}</td>
-                            <td><a href="/hardware/cabinet/cabinet_update/{{ cabinet.id }}">更新</a> &nbsp;
+                            <td style="text-align: center"><a href="/hardware/cabinet/cabinet_update/{{ cabinet.id }}">更新</a> &nbsp;
                             <a href="#" onclick="delete_cabinet({{ cabinet.id }})">删除</a></td>
                         </tr>
                     {% endfor %}
