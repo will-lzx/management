@@ -7,22 +7,23 @@
 {% endblock %}
 
 {% block content %}
-    <div>
-        <a href="/customer/rule/" name="return">返回</a>
+    <div class="nr_cont">
+    <div class="jd_tj" >
+        <a href="/customer/rule/" name="return"><返回</a>
     </div>
     <div class="div-update">
-        <table  class="div-table">
+        <table class="jdtj">
             <tr>
-                <td>开始时间长度</td>
+                <th>开始时间长度</th>
                 <td>
                     <input name="time_long" required value="{{ rule.start_time_long }}" onblur="mblur('请输入开始时间长度')" onclick="mclick('请输入开始时间长度')">小时
                 </td>
             </tr>
             <tr>
-                <td>单价</td><td><input name="unit_price" required value='{{ rule.unit_price }}' onblur="mblur('请输入单价')" onclick="mclick('请输入单价')">元</td>
+                <th>单价</th><td><input name="unit_price" required value='{{ rule.unit_price }}' onblur="mblur('请输入单价')" onclick="mclick('请输入单价')">元</td>
             </tr>
             <tr>
-                <td>是否生效</td>
+                <th>是否生效</th>
                 <td>
                     <input type="radio" value="是" name="is_valid"
                            {% ifequal rule.is_valid 1 %}checked{% endifequal %}>是
@@ -30,10 +31,10 @@
                 </td>
             </tr>
             <tr>
-                <td>操作人</td><td><input name="operator" required value="{{ rule.operator }}" onblur="mblur('请输入操作人')" onclick="mclick('请输入操作人')"></td>
+                <th>操作人</th><td><input name="operator" required value="{{ rule.operator }}" onblur="mblur('请输入操作人')" onclick="mclick('请输入操作人')"></td>
             </tr>
-            <tr>
-                <td colspan="2"><input type="submit" value="提交" onclick="submit({{ rule.id }})"></td>
+            <tr><th></th>
+                <td><input type="submit" value="提交" onclick="submit({{ rule.id }})"> &nbsp; <input type="submit" value="取消" onclick="window.history.back(-1)"></tdh>
             </tr>
         </table>
     </div>
