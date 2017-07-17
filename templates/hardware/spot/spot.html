@@ -12,22 +12,22 @@
         <div class="jd_tj" ><a href="#" onclick="spot_add()">+添加景点</a></div>
     </div>
     <div class="div-add">
-        <table>
+        <table class="jdtj">
             <tr>
-                <td>景点名称</td>
+                <th>景点名称</th>
                 <td>
                     <input name="spot_name" required value="请输入景点名称" onblur="mblur('请输入景点名称')" onclick="mclick('请输入景点名称')">
                 </td>
             </tr>
             <tr>
-                <td>省</td>
+                <th>省</th>
                 <td>
                     <select id="province" name="" size="" >
                     </select>
                 </td>
             </tr>
             <tr>
-                <td>市</td>
+                <th>市</th>
                 <td>
                     <select id="city" name="" size="">
                       <option value="0">请选择城市</option>
@@ -35,17 +35,17 @@
                 </td>
             </tr>
             <tr>
-                <td>详细地址</td>
+                <th>详细地址</th>
                 <td>
                     <input name="address" required value="请输入详细地址" onblur="mblur('请输入详细地址')" onclick="mclick('请输入详细地址')">
                 </td>
             </tr>
             <tr>
-                <td>负责人</td>
+                <th>负责人</th>
                 <td><input name="responsible_person" required value="请输入负责人" onblur="mblur('请输入负责人')" onclick="mclick('请输入负责人')"></td>
             </tr>
             <tr>
-                <td>计费规则</td>
+                <th>计费规则</th>
                 <td>
                     <select id="rule">
                         <option value="0">请选择计费规则</option>
@@ -58,12 +58,10 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2"><input type="submit" value="提交" onclick="submit()"></td>
+                <th></th>
+                <td ><input type="submit" value="提交" onclick="submit()"> &nbsp; <input type="submit" value="取消" onclick="cancel_add()"></td>
             </tr>
         </table>
-        <div>
-            <a href="#" onclick="cancel_add()">取消</a>
-        </div>
     </div>
     <div class="div-content">
         <table>
