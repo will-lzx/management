@@ -211,7 +211,8 @@ table.jdtj {
     border-width: 1px;
     border-color: #999999;
     border-collapse: collapse;
-    width: 80%;
+    width: 50%;
+    margin-left: 20px;
 }
 table.jdtj th {
     border-width: 1px;
