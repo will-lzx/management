@@ -87,6 +87,16 @@ def lendhistory(request, mobile_number):
     return response
 
 
+def lendmanagement(request):
+    lendhistories = LendHistory.objects.all().order_by('-start_time')
+    template_name = 'customer/lendmanagement.html'
+
+    context = {'lendhistories': lendhistories}
+
+    response = render(request, template_name, context)
+    return response
+
+
 def rule(request):
     template_name = 'customer/rule/rule.html'
     rules = Rule.objects.all().order_by('-modify_time')

@@ -21,7 +21,10 @@ from customer.views import *
 urlpatterns = [
     url(r'^$', login_required(customer, login_url='/home/home_login/'), name='customer'),
     url(r'^lendhistory/(?P<mobile_number>.+)/$', login_required(lendhistory, login_url='/home/home_login/'), name='lendhistory'),
+
     url(r'^search/$', login_required(search, login_url='/home/home_login/'), name='search'),
+
+    url(r'^lendmanagement/$', login_required(lendmanagement, login_url='/home/home_login/'), name='lendmanagement'),
 
     # rule
     url(r'^rule/$', login_required(rule, login_url='/home/home_login/'), name='rule'),

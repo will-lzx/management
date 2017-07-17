@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load own_tag %}
+{% block title %}
+    租借管理
+{% endblock %}
+
+{% block content %}
+       <div class="bg_xq">
+
+            <table class="bgxq">
+            <tr>
+                <th>订单号</th>
+                <th>手机号</th>
+                <th>开始时间</th>
+                <th>归还时间</th>
+                <th>租金</th>
+                <th>当前状态</th>
+                <th>自拍杆ID</th>
+                <th>计费规则</th>
+            </tr>
+
+            {% if lendhistories %}
+                {% for lendhistory in lendhistories %}
+                    <tr>
+                        <td>{{ lendhistory.id }}</td>
+                        <td>{{ lendhistory.mobile_number }}</td>
+                        <td>{{ lendhistory.start_time }}</td>
+                        <td>{{ lendhistory.return_time }}</td>
+                        <td>{{ lendhistory.money }}</td>
+                        <td>{{ lendhistory.status }}</td>
+                        <td>{{ lendhistory.pole_id }}</td>
+                        <td>{{ lendhistory.rule_id }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="8">暂无租借记录</td>
+                </tr>
+            {% endif %}
+        </table>
+    </div>
+
+{% endblock %}
