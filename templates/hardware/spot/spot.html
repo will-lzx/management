@@ -92,7 +92,7 @@
                         <td>{{ spot.address }}</td>
                         <td>{{ spot.responsible_person }}</td>
                         <td>{{ spot.rule_id }}</td>
-                        <td><a href="/hardware/spot/spot_update/{{ spot.id }}">更新</a> &nbsp;<a href="#" onclick="delete_spot({{ spot.id }})">删除</a></td>
+                        <td  style="text-align: center"><a href="/hardware/spot/spot_update/{{ spot.id }}">更新</a> &nbsp;<a href="#" onclick="delete_spot({{ spot.id }})">删除</a></td>
                     </tr>
                 {% endfor %}
             {% else %}
