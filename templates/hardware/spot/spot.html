@@ -20,6 +20,12 @@
                 </td>
             </tr>
             <tr>
+                <th>景点图片</th>
+                <td>
+                    <input name="spot_name" required value="请上传景点图片" onblur="mblur('请输入景点名称')" onclick="mclick('请输入景点名称')">
+                </td>
+            </tr>
+            <tr>
                 <th>省</th>
                 <td>
                     <select id="province" name="" size="" >
@@ -63,44 +69,40 @@
             </tr>
         </table>
     </div>
-    <div class="div-content">
-        <table>
+    <div class="bg_til">共有 <span class="col">7909</span> 条符合条件</div>
+        <table class="gridtable">
             <tr>
-                <td rowspan="2">景点名称</td>
-                <td rowspan="2">省</td>
-                <td rowspan="2">市</td>
-                <td rowspan="2">详细地址</td>
-                <td rowspan="2">负责人</td>
-                <td rowspan="2">计费规则</td>
-                <td colspan="2">操作</td>
-            </tr>
-            <tr>
-                <td>更新</td>
-                <td>删除</td>
+                <th >景点名称</th>
+                <th >景点图片</th>
+                <th >省</th>
+                <th>市</th>
+                <th>详细地址</th>
+                <th>负责人</th>
+                <th>计费规则</th>
+                <th>操作</th>
             </tr>
 
             {% if spots %}
                 {% for spot in spots %}
                     <tr>
                         <td>{{ spot.name }}</td>
+                        <td>{{ spot.pic }}</td>
                         <td>{{ spot.province }}</td>
                         <td>{{ spot.city }}</td>
                         <td>{{ spot.address }}</td>
                         <td>{{ spot.responsible_person }}</td>
                         <td>{{ spot.rule_id }}</td>
-                        <td><a href="/hardware/spot/spot_update/{{ spot.id }}">更新</a></td>
-                        <td><a href="#" onclick="delete_spot({{ spot.id }})">删除</a></td>
-                        <td></td>
+                        <td><a href="/hardware/spot/spot_update/{{ spot.id }}">更新</a> &nbsp;<a href="#" onclick="delete_spot({{ spot.id }})">删除</a></td>
                     </tr>
                 {% endfor %}
             {% else %}
                 <tr>
-                    <td colspan="6">No cabinets</td>
+                    <td colspan="7">No cabinets</td>
                 </tr>
             {% endif %}
         </table>
     </div>
-    </div>
+
     <script src="/static/js/jquery-3.2.1.js"></script>
     <script src="/static/js/province_city.js"></script>
 
