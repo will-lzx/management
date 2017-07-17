@@ -8,7 +8,7 @@
 
 {% block content %}
     <div class="nr_cont">
-    <div class="sear"><a href="/hardware/cabinet/cabinet_add.html">添加</a></div>
+    <div class="sear"><a href="#" onclick="cabinet_add()">添加</a></div>
     <div class="bg_til">共有 <span class="col">7909</span> 条符合条件</div>
     <div class="div-add">
         <table>
@@ -124,6 +124,94 @@
 
         });
 
+        function cabinet_add()
+        {
+            $('.div-add').show();
+        }
+        function cancel_add()
+        {
+             clear_content();
+             $('.div-add').hide();
+        }
+
+        function mclick(expect_value){
+            if(event.srcElement.value==expect_value)
+                event.srcElement.value="";
+        }
+
+        function mblur(expect_value){
+            if(event.srcElement.value=="")
+                event.srcElement.value=expect_value;
+        }
+
+        function submit()
+        {
+            if($("input[name=number]").val() =="" || $("input[name=number]").val() =="请输入机柜编号"){
+                alert("机柜编号不能为空!");
+                return false;
+            }
+
+            if($("input[name=two_dimension]").val() =="" || $("input[name=two_dimension]").val() =="请输入机柜二维码"){
+                alert("机柜二维码不能为空!");
+                return false;
+            }
+
+            if($("#spot").find("option:selected").text() =="请选择所属景区"){
+                alert("请选择所属景区");
+                return false;
+            }
+
+            if($("input[name=capacity]").val() =="" || $("input[name=capacity]").val() =="请输入机柜容量"){
+                alert("请输入机柜容量!");
+                return false;
+            }
+
+            if($("input[name=status]").val() =="" || $("input[name=status]").val() =="请输入机柜状态"){
+                alert("请输入机柜状态!");
+                return false;
+            }
+
+            if($("input[name=lat]").val() =="" || $("input[name=lat]").val() =="请输入机柜经度"){
+                alert("请输入机柜经度!");
+                return false;
+            }
+
+            if($("input[name=lon]").val() =="" || $("input[name=lon]").val() =="请输入机柜纬度"){
+                alert("请输入机柜纬度!");
+                return false;
+            }
+
+            $.ajax({
+                 type: "POST",
+                 url: "/hardware/cabinet/cabinet_add/",
+                 data: {number:$("input[name=number]").val(), two_dimension:$("input[name=two_dimension]").val(), spot_id:$("#spot").find("option:selected").val(), capacity:$("input[name=capacity]").val(), status:$("input[name=status]").val(), lat:$("input[name=lat]").val(), lon:$("input[name=lon]").val()},
+                 dataType: "html",
+                 success: function(data){
+                     if (data.split('&')[0] == 'Success')
+                     {
+                         $('.div-add').hide();
+
+                         clear_content();
+
+                         $('.div-content').html(data.split('&')[1]);
+                     }
+                     else{
+                         alert(data.split('&')[1]);
+                     }
+                  }
+             });
+        }
+
+        function clear_content()
+        {
+            $("input[name=number]").val('请输入机柜编号');
+            $("input[name=two_dimension]").val('请输入机柜二维码');
+            $("#spot").val('0');
+            $("input[name=capacity]").val('请输入机柜容量');
+            $("input[name=status]").val('请输入机柜状态');
+            $("input[name=lat]").val('请输入机柜经度');
+            $("input[name=lon]").val('请输入机柜纬度');
+        }
 
         function delete_cabinet(cabinet_id)
         {
