@@ -3,11 +3,12 @@
 {% load static %}
 {% load own_tag %}
 {% block title %}
-    客户管理
+    用户管理
 {% endblock %}
 
 {% block content %}
-    <div>
+    <div class="nr_cont">
+       <div>
         <input id="weixin_number">
         <input id="mobile_number">
         <select id="deposit_status">
@@ -17,7 +18,7 @@
         </select>
         <input type="button" value="查找" onclick="search()">
     </div>
-    <div class="div-table">
+       <div class="div-table">
         <table>
             <tr>
                 <td>微信号</td>
@@ -48,6 +49,7 @@
                 </tr>
             {% endif %}
         </table>
+    </div>
     </div>
 
     <script src="/static/js/jquery-3.2.1.js"></script>
