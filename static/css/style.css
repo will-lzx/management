@@ -71,10 +71,13 @@ body{  margin:0;  padding:0;height: 100%;width: 100%;}
 .dh_li{width: 160px;height: 30px;padding: 10px;border-bottom: 1px dashed #e3e3e3; }
 .dh_icon{float: left;width: 20px;height: 20px;border: none;margin-left: 20px;margin-top: 6px;}
 .icon_img{width: 18px;height: auto;}
+.icon_img_d{width: 20px;height: auto;}
 .dh_li_til{padding-left: 10px;float: left;font-size: 14px;font-weight:400;color: white;line-height: 30px;}
 .dh_li_til a{text-decoration: none;color: #333333;font-weight:300}
 .dh_li_til a:hover{text-decoration: none;color:#cc0099;font-weight:400;}
 .crunt_li{background-color: #cc0099;border: none;border-right: 1px solid #cc0099; }
+.crunt_li a{color: white;font-weight: 400;text-decoration: none; }
+.crunt_li a:hover{color: white;font-weight: 400;text-decoration: none; }
 .dh_lx{width: 140px;height: 30px; text-align:left;  font-size: 14px;color: #333333;margin-top: 60px;padding-left: 30px;font-weight: 200;}
 
 .nr_cont{width:auto;height:auto;position: absolute;top: 61px;left: 181px; right:0;bottom: 0;padding: 30px;background-color: #f6f6f6; }
@@ -96,7 +99,7 @@ body{  margin:0;  padding:0;height: 100%;width: 100%;}
 .sear{width: 100%;float: left;height:auto;background-color: white;text-align: left;}
 .sear_input{width: 120px;height: 20px;border: 1px solid #999999;  padding: 4px;font-size: 14px;float: left;margin:10px 0 10px 10px;border-radius:4px;}
 .ser_sec{width: 120px; height: 30px; overflow: hidden; }
-.sear_sec select{width: 120px;height: 30px;background-color: white;font-size: 14px;margin: 10px;}
+.sear_sec select{width: 120px;height: 30px;background-color: white;font-size: 14px;margin: 10px;float: left;}
 .jiansuo {width: 60px;border: 1px solid #999999;background-color: #cc0099;}
 
 .button {float: left;
