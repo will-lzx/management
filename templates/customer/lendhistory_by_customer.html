@@ -1,23 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" dir="ltr">
+{% extends "base.html" %}
 {% load static %}
 {% load own_tag %}
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="轻拍科技管理后台 懒人经济时代，顺应共享经济国家战略，携手打造轻生活轻旅游新方式">
-        <meta name="keywords" content="轻拍科技 自拍杆 共享自拍杆 共享经济 共享单车／共享充电宝／共享雨伞／共享篮球／共享按摩椅／共享直升机 自拍 旅游自拍 共享租赁 共享风口">
-        <title>租借详情</title>
-        <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css"/>
-        <link href="{% static 'favicon.ico' %}" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
-        {% block head %}
-        {% endblock %}
-    </head>
-    <body>
+
+{% block title %}
+    {{ customer.mobile_number }}租借详情{% endblock %}
+{% block content %}
        <div class="bg_xq">
-            <div class="bg_xq_til">{% block title %}
-                   {{ customer.mobile_number }}租借详情{% endblock %}</div>
             <table class="bgxq">
             <tr>
                 <th>订单号</th>
@@ -45,6 +33,4 @@
             </tr>
         </table>
     </div>
-
-    </body>
-</html>
+{% endblock %}

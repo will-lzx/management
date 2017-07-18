@@ -12,26 +12,30 @@
            <input class="sear_input" id="weixin_number" placeholder="微信昵称">
            <input class="sear_input" id="alipay" placeholder="支付宝帐号">
            <input class="sear_input" id="mobile_number" placeholder="手机号">
-           <div class="sear_sec"><select id="deposit_status">
-            <option value="0">已归还</option>
-            <option value="1">未归还</option>
-            <option value="2">购买</option>
-            </select></div>
+           <div class="sear_sec">
+               <select id="deposit_status">
+                    <option value="0">已归还</option>
+                    <option value="1">未归还</option>
+                    <option value="2">购买</option>
+                </select>
+           </div>
+            {% csrf_token %}
             <button class="button yh_an"  onclick="search()"><span>查找</span></button>
         </div>
-        <div class="bg_til">共有 <span class="col">87909</span> 条符合条件</div>
-        <table class="gridtable">
-            <tr>
-                <th>微信号</th>
-                <th>手机号</th>
-                <th>支付宝帐号</th>
-                <th>蚂蚁信用分</th>
-                <th>押金</th>
-                <th>注册时间</th>
-                <th>租用次数</th>
-                <th>操作</th>
-            </tr>
-            {% if customers %}
+        <div class="bg_til">共有 <span class="col">{{ total }}</span> 条符合条件</div>
+        <div class="div-table">
+            <table class="gridtable">
+                <tr>
+                    <th>微信号</th>
+                    <th>手机号</th>
+                    <th>支付宝帐号</th>
+                    <th>蚂蚁信用分</th>
+                    <th>押金</th>
+                    <th>注册时间</th>
+                    <th>租用次数</th>
+                    <th>操作</th>
+                </tr>
+
                 {% for customer in customers %}
                     <tr>
                         <td>{{ customer.weixin_number }}</td>
@@ -44,12 +48,19 @@
                         <td><a href="/customer/lendhistory/{{ customer.mobile_number }}"  target="_blank">租借详情</a></td>
                     </tr>
                 {% endfor %}
-            {% else %}
-                <tr>
-                    <td colspan="6">No customers still</td>
-                </tr>
+            </table>
+        </div>
+
+        <div>
+            {% if customers.has_previous %}
+                <a href="?page={{ customers.previous_page_number }}">Previous</a>
             {% endif %}
-        </table>
+            Page {{ customers.number }} of {{ customers.paginator.num_pages }}
+            {% if customers.has_next %}
+              <a href="?page={{ customers.next_page_number }}">Next</a>
+            {% endif %}
+        </div>
+
     </div>
 
     <script src="/static/js/jquery-3.2.1.js"></script>
@@ -66,13 +77,14 @@
         function search()
         {
             var weixin_number = $('#weixin_number').val();
+            var alipay = $('#alipay').val();
             var mobile_number = $('#mobile_number').val();
-            var deposit_status = $("#spot").find("option:selected").text();
+            var deposit_status = $("#deposit_status").val();
 
             $.ajax({
                  type: "POST",
                  url: "/customer/search/",
-                 data: {weixin_number:weixin_number, mobile_number:mobile_number, deposit_status:deposit_status},
+                 data: {weixin_number:weixin_number, alipay:alipay, mobile_number:mobile_number, deposit_status:deposit_status},
                  dataType: "html",
                  success: function(data){
                      if (data.split('&')[0] == 'Success')

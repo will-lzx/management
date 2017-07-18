@@ -69,38 +69,50 @@
             </tr>
         </table>
     </div>
-    <div class="bg_til">共有 <span class="col">7909</span> 条符合条件</div>
-        <table class="gridtable">
-            <tr>
-                <th >景点名称</th>
-                <th >景点图片</th>
-                <th >省</th>
-                <th>市</th>
-                <th>详细地址</th>
-                <th>负责人</th>
-                <th>计费规则</th>
-                <th>操作</th>
-            </tr>
-
-            {% if spots %}
-                {% for spot in spots %}
-                    <tr>
-                        <td>{{ spot.name }}</td>
-                        <td>{{ spot.pic }}</td>
-                        <td>{{ spot.province }}</td>
-                        <td>{{ spot.city }}</td>
-                        <td>{{ spot.address }}</td>
-                        <td>{{ spot.responsible_person }}</td>
-                        <td>{{ spot.rule_id }}</td>
-                        <td  style="text-align: center"><a href="/hardware/spot/spot_update/{{ spot.id }}">更新</a> &nbsp;<a href="#" onclick="delete_spot({{ spot.id }})">删除</a></td>
-                    </tr>
-                {% endfor %}
-            {% else %}
+    <div class="bg_til">共有 <span class="col">{{ total }}</span> 条符合条件</div>
+        <div class="div-table">
+            <table class="gridtable">
                 <tr>
-                    <td colspan="7">No cabinets</td>
+                    <th >景点名称</th>
+                    <th >景点图片</th>
+                    <th >省</th>
+                    <th>市</th>
+                    <th>详细地址</th>
+                    <th>负责人</th>
+                    <th>计费规则</th>
+                    <th>操作</th>
                 </tr>
+
+                {% if spots %}
+                    {% for spot in spots %}
+                        <tr>
+                            <td>{{ spot.name }}</td>
+                            <td>{{ spot.pic }}</td>
+                            <td>{{ spot.province }}</td>
+                            <td>{{ spot.city }}</td>
+                            <td>{{ spot.address }}</td>
+                            <td>{{ spot.responsible_person }}</td>
+                            <td>{{ spot.rule_id }}</td>
+                            <td  style="text-align: center"><a href="/hardware/spot/spot_update/{{ spot.id }}">更新</a> &nbsp;<a href="#" onclick="delete_spot({{ spot.id }})">删除</a></td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="7">No cabinets</td>
+                    </tr>
+                {% endif %}
+            </table>
+        </div>
+
+        <div>
+            {% if spots.has_previous %}
+                <a href="?page={{ spots.previous_page_number }}">Previous</a>
             {% endif %}
-        </table>
+            Page {{ spots.number }} of {{ spots.paginator.num_pages }}
+            {% if spots.has_next %}
+              <a href="?page={{ spots.next_page_number }}">Next</a>
+            {% endif %}
+        </div>
     </div>
 
     <script src="/static/js/jquery-3.2.1.js"></script>
@@ -198,10 +210,8 @@
                  if (data.split('&')[0] == 'Success')
                  {
                      $('.div-add').hide();
-
                      clear_content();
-
-                     $('.div-content').html(data.split('&')[1]);
+                     reload();
                  }
                  else{
                      alert(data.split('&')[1]);
@@ -222,8 +232,10 @@
 
     function delete_spot(spot_id)
     {
-        delete_check();
-        $.ajax({
+        var status = delete_check();
+        if(status)
+        {
+            $.ajax({
              type: "POST",
              url: "/hardware/spot/spot_delete/",
              data: {spot_id:spot_id},
@@ -231,14 +243,14 @@
              success: function(data){
                  if (data.split('&')[0] == 'Success')
                  {
-
-                     $('.div-content').html(data.split('&')[1]);
+                     reload();
                  }
                  else{
                      alert(data.split('&')[1]);
                  }
-              }
-         });
+             }
+            });
+        }
     }
     function delete_check() {
         var msg = "您真的确定要删除吗？\n\n请确认！";
@@ -246,6 +258,16 @@
             return true;
         }else{
             return false;
+        }
+    }
+    function reload() {
+        if (location.href.indexOf('?')> 0)
+        {
+            location = location.href.split('?')[0];
+        }
+        else
+        {
+            location = location.href.split('#')[0];
         }
     }
 
