@@ -76,6 +76,7 @@ body{  margin:0;  padding:0;height: 100%;width: 100%;}
 .dh_li_til a{text-decoration: none;color: #333333;font-weight:300}
 .dh_li_til a:hover{text-decoration: none;color:#cc0099;font-weight:400;}
 .crunt_li{background-color: #cc0099;border: none;border-right: 1px solid #cc0099; }
+.crunt_li a{color: white;font-weight: 400;text-decoration: none; }
 .dh_lx{width: 140px;height: 30px; text-align:left;  font-size: 14px;color: #333333;margin-top: 60px;padding-left: 30px;font-weight: 200;}
 
 .nr_cont{width:auto;height:auto;position: absolute;top: 61px;left: 181px; right:0;bottom: 0;padding: 30px;background-color: #f6f6f6; }
