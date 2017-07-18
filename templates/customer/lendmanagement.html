@@ -12,51 +12,67 @@
         <div class="sear">
            <input class="sear_input" id="order_id" placeholder="订单号">
            <input class="sear_input" id="time" placeholder="日期范围">
-           <div class="sear_sec"><select id="deposit_channel">
-            <option value="0">微信</option>
-            <option value="1">支付宝</option>
-            </select></div>
-           <div class="sear_sec"><select id="deposit_status">
-            <option value="0">已归还</option>
-            <option value="1">未归还</option>
-            <option value="2">购买</option>
-            </select></div>
+           <div class="sear_sec">
+               <select id="deposit_channel">
+                    <option value="0">微信</option>
+                    <option value="1">支付宝</option>
+                </select>
+           </div>
+           <div class="sear_sec">
+               <select id="deposit_status">
+                    <option value="0">已归还</option>
+                    <option value="1">未归还</option>
+                    <option value="2">购买</option>
+               </select>
+           </div>
             <button class="button yh_an"  onclick="search()"><span>查找</span></button>
         </div>
-        <div class="bg_til">共有 <span class="col">87909</span> 条符合条件</div>
-        <table class="gridtable">
-            <tr>
-                <th>订单号</th>
-                <th>渠道</th>
-                <th>租金</th>
-                <th>当前状态</th>
-                <th>开始时间</th>
-                <th>归还时间</th>
-                <th>借出机柜</th>
-                <th>还入机柜</th>
-                <th>计费规则</th>
-            </tr>
-
-            {% if lendhistories %}
-                {% for lendhistory in lendhistories %}
-                    <tr>
-                        <td>{{ lendhistory.id }}</td>
-                        <td>{{ lendhistory.channel }}</td>
-                        <td>{{ lendhistory.money }}</td>
-                        <td>{{ lendhistory.status }}</td>
-                        <td>{{ lendhistory.start_time }}</td>
-                        <td>{{ lendhistory.return_time }}</td>
-                        <td>{{ lendhistory.rent_id }}</td>
-                        <td>{{ lendhistory.pole_id }}</td>
-                        <td>{{ lendhistory.rule_id }}</td>
-                    </tr>
-                {% endfor %}
-            {% else %}
+        <div class="bg_til">共有 <span class="col">{{ total }}</span> 条符合条件</div>
+        <div>
+            <table class="gridtable">
                 <tr>
-                    <td colspan="9">暂无租借记录</td>
+                    <th>订单号</th>
+                    <th>渠道</th>
+                    <th>租金</th>
+                    <th>当前状态</th>
+                    <th>开始时间</th>
+                    <th>归还时间</th>
+                    <th>借出机柜</th>
+                    <th>还入机柜</th>
+                    <th>计费规则</th>
                 </tr>
+
+                {% if lendhistories %}
+                    {% for lendhistory in lendhistories %}
+                        <tr>
+                            <td>{{ lendhistory.id }}</td>
+                            <td>{{ lendhistory.channel }}</td>
+                            <td>{{ lendhistory.money }}</td>
+                            <td>{{ lendhistory.status }}</td>
+                            <td>{{ lendhistory.start_time }}</td>
+                            <td>{{ lendhistory.return_time }}</td>
+                            <td>{{ lendhistory.rent_id }}</td>
+                            <td>{{ lendhistory.pole_id }}</td>
+                            <td>{{ lendhistory.rule_id }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="9">暂无租借记录</td>
+                    </tr>
+                {% endif %}
+            </table>
+        </div>
+
+        <div>
+            {% if lendhistories.has_previous %}
+                <a href="?page={{ lendhistories.previous_page_number }}">Previous</a>
             {% endif %}
-        </table>
+            Page {{ lendhistories.number }} of {{ lendhistories.paginator.num_pages }}
+            {% if lendhistories.has_next %}
+              <a href="?page={{ lendhistories.next_page_number }}">Next</a>
+            {% endif %}
+        </div>
     </div>
 
 {% endblock %}

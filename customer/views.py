@@ -87,11 +87,14 @@ def lendhistory(request, mobile_number):
 
 def lendmanagement(request):
     lendhistories = LendHistory.objects.all().order_by('-start_time')
+    total = len(lendhistories)
+    lendhistories = pagintor(request, lendhistories)
     template_name = 'customer/lendmanagement.html'
 
     context = {
         'menu_selected': 'lend_management',
-        'lendhistories': lendhistories
+        'lendhistories': lendhistories,
+        'total': total
     }
 
     response = render(request, template_name, context)
