@@ -104,13 +104,13 @@
             </table>
         </div>
 
-        <div>
+        <div class="page_num">
             {% if spots.has_previous %}
-                <a href="?page={{ spots.previous_page_number }}">Previous</a>
+                <a href="?page={{ spots.previous_page_number }}">前一页</a>
             {% endif %}
-            Page {{ spots.number }} of {{ spots.paginator.num_pages }}
+            <span class="col">{{ spots.number }}</span>/{{ spots.paginator.num_pages }}
             {% if spots.has_next %}
-              <a href="?page={{ spots.next_page_number }}">Next</a>
+              <a href="?page={{ spots.next_page_number }}">下一页</a>
             {% endif %}
         </div>
     </div>
