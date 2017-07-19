@@ -55,7 +55,7 @@
             {% if customers.has_previous %}
                 <a href="?page={{ customers.previous_page_number }}">前一页</a>
             {% endif %}
-             {{ customers.number }} / {{ customers.paginator.num_pages }}
+            <span class="col">{{ customers.number }}</span>/{{ customers.paginator.num_pages }}
             {% if customers.has_next %}
               <a href="?page={{ customers.next_page_number }}">下一页</a>
             {% endif %}
