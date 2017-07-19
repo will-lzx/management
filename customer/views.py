@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
+
+from lib.myPaginator import *
+
 from home.models import *
 from django.http import HttpResponse
 from datetime import *
@@ -10,61 +13,53 @@ def customer(request):
     template_name = 'customer/customer_index.html'
 
     customers = Customer.objects.all()
-
+    total = len(customers)
+    customers = pagintor(request, customers)
     context = {
         'menu_selected': 'user_management',
-        'customers': customers
+        'customers': customers,
+        'total': total
     }
 
-    response = render(request, template_name, context)
-    return response
+    return render_to_response(template_name, context)
 
 
 def search(request):
     weixin_number = request.POST.get('weixin_number')
+    alipay = request.POST.get('alipay')
     mobile_number = request.POST.get('mobile_number')
     deposit_status = request.POST.get('deposit_status')
 
     if weixin_number:
-        if mobile_number:
-            if deposit_status:
-                customers = Customer.objects.filter(weixin_number__contains=weixin_number, mobile_number__contains=mobile_number, deposit=deposit_status)
-            else:
-                customers = Customer.objects.filter(weixin_number__contains=weixin_number,
-                                                    mobile_number__contains=mobile_number)
-        else:
-            if deposit_status:
-                customers = Customer.objects.filter(weixin_number__contains=weixin_number, deposit=deposit_status)
-            else:
-                customers = Customer.objects.filter(weixin_number__contains=weixin_number)
+        customers = Customer.objects.filter(weixin_number__contains=weixin_number)
     else:
-        if mobile_number:
-            if deposit_status:
-                customers = Customer.objects.filter(mobile_number__contains=mobile_number, deposit=deposit_status)
-            else:
-                customers = Customer.objects.filter(mobile_number__contains=mobile_number)
-        else:
-            if deposit_status:
-                customers = Customer.objects.filter(deposit=deposit_status)
-            else:
-                customers = ''
+        customers = Customer.objects.all()
+
+    if alipay:
+        customers = customers.filter(alipay__contains=alipay)
+
+    if mobile_number:
+        customers = customers.filter(mobile_number__contains=mobile_number)
+
+    if deposit_status:
+        customers = customers.filter(deposit_status=deposit_status)
 
     html = get_customer(customers)
     return HttpResponse('Success&' + html)
 
 
 def get_customer(customers):
-    html = '<table><tr><td>微信号</td>' \
-           '<td>手机号</td>' \
-           '<td>支付宝帐号</td>' \
-           '<td>蚂蚁信用分</td>' \
-           '<td>押金</td>' \
-           '<td>注册时间</td>' \
-           '<td>租用次数</td>' \
-           '<td>操作</td></tr>'
+    html = '<table class="gridtable"><tr><th>微信号</th>' \
+           '<th>手机号</th>' \
+           '<th>支付宝帐号</th>' \
+           '<th>蚂蚁信用分</th>' \
+           '<th>押金</th>' \
+           '<th>注册时间</th>' \
+           '<td>租用次数</th>' \
+           '<th>操作</td></tr>'
 
     if not customers:
-        html += '<tr><td colspan="6">No customers still</td></tr>'
+        html += '<tr><td colspan="8">No customers still</td></tr>'
     else:
         for customer in customers:
             html += '<tr><td>' + str(customer.weixin_number) \
@@ -92,11 +87,14 @@ def lendhistory(request, mobile_number):
 
 def lendmanagement(request):
     lendhistories = LendHistory.objects.all().order_by('-start_time')
+    total = len(lendhistories)
+    lendhistories = pagintor(request, lendhistories)
     template_name = 'customer/lendmanagement.html'
 
     context = {
         'menu_selected': 'lend_management',
-        'lendhistories': lendhistories
+        'lendhistories': lendhistories,
+        'total': total
     }
 
     response = render(request, template_name, context)

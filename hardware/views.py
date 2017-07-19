@@ -2,6 +2,7 @@ from django.shortcuts import render
 from home.models import *
 from django.http import HttpResponse
 from datetime import *
+from lib.myPaginator import *
 # Create your views here.
 
 
@@ -13,11 +14,15 @@ def hardware(request):
 
 def cabinet(request):
     cabinets = Cabinet.objects.all().order_by('number')
+    total = len(cabinets)
+    cabinets = pagintor(request, cabinets)
+
     spots = Spot.objects.all()
     context = {
         'menu_selected': 'cabinet_management',
         'cabinets': cabinets,
-        'spots': spots
+        'spots': spots,
+        'total': total
     }
     template_name = 'hardware/cabinet/cabinet.html'
     response = render(request, template_name, context)
@@ -84,6 +89,7 @@ def cabinet_delete(request):
     cabinet_id = request.POST.get('cabinet_id')
 
     cabinet = Cabinet.objects.filter(id=cabinet_id)
+
     try:
         cabinet.delete()
     except Exception as e:
@@ -164,11 +170,16 @@ def pole_delete(request):
 def spot(request):
     template_name = 'hardware/spot/spot.html'
     spots = Spot.objects.all().order_by('province', 'city')
+
+    total = len(spots)
+
+    spots = pagintor(request, spots)
     rules = Rule.objects.all().order_by('-modify_time')
     context = {
         'menu_selected': 'spot_management',
         'spots': spots,
-        'rules': rules
+        'rules': rules,
+        'total': total
     }
     response = render(request, template_name, context)
     return response
@@ -198,6 +209,8 @@ def spot_delete(request):
     spot_id = request.POST.get('spot_id')
 
     spot = Spot.objects.filter(id=spot_id)
+
+
     try:
         spot.delete()
     except Exception as e:
@@ -244,17 +257,17 @@ def spot_update_submit(request):
 
 
 def get_cabinets():
-    html = '<table><tr><td rowspan="2">编号</td>' \
-           '<td rowspan="2">二维码</td>' \
-           '<td rowspan="2">所属景区</td>' \
-           '<td rowspan="2">容量</td>' \
-           '<td rowspan="2">状态</td>' \
-           '<td rowspan="2">经度</td>' \
-           '<td rowspan="2">纬度</td>' \
-           '<td colspan="2">操作</td>' \
+    html = '<table class="gridtable"><tr><th rowspan="2">编号</th>' \
+           '<th rowspan="2">二维码</th>' \
+           '<th rowspan="2">所属景区</th>' \
+           '<th rowspan="2">容量</th>' \
+           '<th rowspan="2">状态</th>' \
+           '<th rowspan="2">经度</th>' \
+           '<th rowspan="2">纬度</th>' \
+           '<th colspan="2">操作</th>' \
            '</tr><tr>' \
-           '<td>更新</td>' \
-           '<td>删除</td></tr>'
+           '<th>更新</th>' \
+           '<th>删除</th></tr>'
     cabinets = Cabinet.objects.all().order_by('number')
     if cabinets:
         for cabinet in cabinets:
@@ -275,16 +288,16 @@ def get_cabinets():
 
 
 def get_spots():
-    html = '<table><tr><td rowspan="2">景点名称</td>' \
-           '<td rowspan="2">省</td>' \
-           '<td rowspan="2">市</td>' \
-           '<td rowspan="2">详细地址</td>' \
-           '<td rowspan="2">负责人</td>' \
-           '<td rowspan="2">计费规则</td>' \
-           '<td colspan="2">操作</td>' \
+    html = '<table class="gridtable"><tr><th rowspan="2">景点名称</th>' \
+           '<th rowspan="2">省</th>' \
+           '<th rowspan="2">市</th>' \
+           '<th rowspan="2">详细地址</th>' \
+           '<th rowspan="2">负责人</th>' \
+           '<th rowspan="2">计费规则</th>' \
+           '<th colspan="2">操作</th>' \
            '</tr><tr>' \
-           '<td>更新</td>' \
-           '<td>删除</td></tr>'
+           '<th>更新</th>' \
+           '<th>删除</th></tr>'
     spots = Spot.objects.all().order_by('province', 'city')
     if spots:
         for spot in spots:
@@ -303,14 +316,14 @@ def get_spots():
 
 
 def get_poles():
-    html = '<table><tr><td rowspan="2">编号</td>' \
-           '<td rowspan="2">机柜编号</td>' \
-           '<td rowspan="2">创建时间</td>' \
-           '<td rowspan="2">更新时间</td>' \
-           '<td colspan="2">操作</td>' \
+    html = '<table class="gridtable"><tr><th rowspan="2">编号</th>' \
+           '<th rowspan="2">机柜编号</th>' \
+           '<th rowspan="2">创建时间</th>' \
+           '<th rowspan="2">更新时间</th>' \
+           '<th colspan="2">操作</th>' \
            '</tr><tr>' \
-           '<td>更新</td>' \
-           '<td>删除</td></tr>'
+           '<th>更新</th>' \
+           '<th>删除</th></tr>'
     poles = Pole.objects.all().order_by('-update_time')
     if poles:
         for pole in poles:
