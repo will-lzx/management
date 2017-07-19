@@ -64,13 +64,13 @@
             </table>
         </div>
 
-        <div>
+        <div class="page_num">
             {% if lendhistories.has_previous %}
-                <a href="?page={{ lendhistories.previous_page_number }}">Previous</a>
+                <a href="?page={{ lendhistories.previous_page_number }}">前一页</a>
             {% endif %}
-            Page {{ lendhistories.number }} of {{ lendhistories.paginator.num_pages }}
+            <span class="col">{{ lendhistories.number }}</span>/{{ lendhistories.paginator.num_pages }}
             {% if lendhistories.has_next %}
-              <a href="?page={{ lendhistories.next_page_number }}">Next</a>
+              <a href="?page={{ lendhistories.next_page_number }}">下一页</a>
             {% endif %}
         </div>
     </div>
