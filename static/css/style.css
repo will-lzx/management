@@ -227,6 +227,6 @@ table.jdtj td {
     padding: 10px;
 }
 .kts{width: 100%;height: 200px;font-size: 18px;line-height: 200px;text-align: center;}
-.page_num{width: 100%;float: left;margin-top: 30px;font-size: 12px; line-height: 50px;color: #333333;}
-.page_num a{text-decoration: none;color: #0033CC;padding: 5px;background-color: #ececec;font-weight: bold;}
-.page_num a:hover{text-decoration: none;color: #cc0099;font-weight: bold;}
+.page_num{width: 100%;float: left;margin-top: 30px;font-size: 12px; line-height: 50px;color: #333333;font-weight: bold;}
+.page_num a{text-decoration: none;color: #0033CC;padding: 5px;background-color: #ececec;}
+.page_num a:hover{text-decoration: none;color: #cc0099;}
