@@ -109,19 +109,17 @@
                 {% endif %}
         </table>
     </div>
-    <div>
+    <div class="page_num">
         {% if cabinets.has_previous %}
-            <a href="?page={{ cabinets.previous_page_number }}">Previous</a>
+            <a href="?page={{ cabinets.previous_page_number }}">前一页</a>
         {% endif %}
-        Page {{ cabinets.number }} of {{ cabinets.paginator.num_pages }}
+        <span class="col">{{ cabinets.number }}</span>/{{ cabinets.paginator.num_pages }}
         {% if cabinets.has_next %}
-          <a href="?page={{ cabinets.next_page_number }}">Next</a>
+          <a href="?page={{ cabinets.next_page_number }}">下一页</a>
         {% endif %}
     </div>
 
     </div>
-
-
 
 
     <script src="/static/js/jquery-3.2.1.js"></script>
