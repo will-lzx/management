@@ -177,7 +177,7 @@ table.gridtable a:hover {
     color: #cc0099;
     text-decoration: none;
 }
-.bg_xq{width: 70%;margin: 20px auto;height:auto;}
+.bg_xq{width: 100%;margin: 20px auto;height:auto;}
 .bg_xq_til{width: 100%;float: left;font-size: 18px;font-weight: 400;text-align: left;line-height: 50px;}
 table.bgxq {
     font-family: verdana,arial,sans-serif;
