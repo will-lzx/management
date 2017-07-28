@@ -26,7 +26,7 @@ class Customer(models.Model):
     alipay = models.CharField(max_length=256)
     credit_score = models.FloatField()
     deposit = models.FloatField()
-    deposit_status = models.IntegerField()
+    deposit_order_id = models.CharField(max_length=256)
     create_time = models.DateTimeField()
 
 
@@ -51,7 +51,7 @@ class Spot(models.Model):
 
 class LendHistory(models.Model):
     pole = models.ForeignKey(Pole)
-    mobile_number = models.CharField(max_length=11)
+    customer_id = models.IntegerField(default=0)
     start_time = models.DateTimeField()
     return_time = models.DateTimeField(default=None)
     rule = models.ForeignKey(Rule)
