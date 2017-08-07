@@ -56,4 +56,5 @@ class LendHistory(models.Model):
     return_time = models.DateTimeField(default=None)
     rule = models.ForeignKey(Rule)
     money = models.FloatField(default=0)
+    # 0：lend 1：return
     status = models.IntegerField(default=0)
