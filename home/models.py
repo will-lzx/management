@@ -50,11 +50,11 @@ class Spot(models.Model):
 
 
 class LendHistory(models.Model):
-    pole = models.ForeignKey(Pole)
-    customer_id = models.IntegerField(default=0)
+    cabinet_id = models.IntegerField(default=0)
+    customer_id = models.CharField(max_length=256)
     start_time = models.DateTimeField()
     return_time = models.DateTimeField(default=None)
     rule = models.ForeignKey(Rule)
     money = models.FloatField(default=0)
-    # 0：lend 1：return
+    # 0：lend 1：return 2:pay
     status = models.IntegerField(default=0)
